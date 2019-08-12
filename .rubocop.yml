@@ -3,3 +3,9 @@ AllCops:
 
 Style/Documentation:
   Enabled: false
+
+Metrics/LineLength:
+  Max: 90
+
+Style/ParallelAssignment:
+  Enabled: false
