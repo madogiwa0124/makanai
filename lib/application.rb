@@ -59,6 +59,3 @@ module Makanai
     end
   end
 end
-
-@router = Makanai::Router.new
-at_exit { Makanai::Application.new(router: @router).run! }
