@@ -1,15 +1,15 @@
 # Makanai
-simple web application framework for learning
+simple web application framework for learning.
 
 # Usage
 
 create a ruby ​​file(ex. app.rb).
 
 ``` ruby
-require_relative './lib/application.rb'
+require_relative './lib/main.rb'
 
-@router.get '/' do
-  'Hello Makanai!!'
+router.get '/' do
+  'Hello Makanai!'
 end
 ```
 
@@ -22,40 +22,65 @@ $ ruby app.rb
 [2019-08-12 20:44:20] INFO  WEBrick::HTTPServer#start: pid=26043 port=8080
 ```
 
-When accessing root, `Hello Makanai!!` is displayed.
+When accessing root, `Hello Makanai!` is displayed.
 
 ## routing
 
 ``` ruby
-require_relative './lib/application.rb'
+require_relative './lib/main.rb'
 
 # root path
-@router.get '/' do
-  'Hello Hey!!'
+router.get '/' do
+  'Hello Makanai!'
 end
 
 # enable access to /hoge
-@router.get '/hoge' do
-  'Hello Hoge!!'
+router.get '/hoge' do
+  'Hello Hoge!'
 end
 
-# enable access to /check with get parameter
-@router.get '/check' do |params|
+# enable access to /params with get parameter
+router.get '/check' do |params|
   params['hoge']
 end
 
 # TODO: post
-@router.post '/resources' do |params|
+router.post '/resources' do |params|
 end
 
 # TODO: patch
-@router.patch '/resources' do |params|
+router.patch '/resources/:id' do |params|
 end
 ```
 
 ## erb render
 
-comming soon...
+Define instance variables used in the routing view.
+
+``` ruby
+require_relative './lib/main.rb'
+
+router.get '/index' do
+  @title = 'Makanai title'
+  @body = 'Makanai body'
+  render :index
+end
+```
+
+Create an erb file in `src/views` with the name specified in render.
+
+``` html
+<!-- src/views/index.erb -->
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title><%= @title %></title>
+</head>
+<body>
+  <%= @body %>
+</body>
+</html>
+```
 
 ## db access and migration
 
