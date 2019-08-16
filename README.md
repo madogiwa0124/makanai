@@ -82,6 +82,29 @@ Create an erb file in `src/views` with the name specified in render.
 </html>
 ```
 
-## db access and migration
+## migration
 
-comming soon...
+makanai uses `sqlite3` as db. create db and migrate schema when executed `rake makanai:db:migrate`.
+
+```
+# execute all migraiton sql
+$ rake makanai:db:migrate target=all
+
+# execute migraiton target sql
+$ rake makanai:db:migration target=20190816_1_create_numbers.sql
+```
+
+display information when excuted migration.
+
+```
+$ rake makanai:db:migration target=all
+INFO: start migration all
+execute: makanai/src/migration/20190816_1_create_numbers.sql
+create table numbers (
+  name varchar(30),
+  val int
+);
+execute: makanai/src/migration/20190816_2_drop_numbers.sql
+drop table numbers;
+INFO: finished migration all
+```
