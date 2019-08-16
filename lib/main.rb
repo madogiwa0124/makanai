@@ -3,11 +3,10 @@
 require_relative './template.rb'
 require_relative './router.rb'
 require_relative './application.rb'
-
-TEMPLATE_ROOT_PATH = '/src/views/'
+require_relative '../config/settings.rb'
 
 def render(path)
-  template_root_path = "#{Dir.pwd}#{TEMPLATE_ROOT_PATH}"
+  template_root_path = "#{Dir.pwd}#{Makanai::Settings::TEMPLATE_ROOT_PATH}"
   full_path = "#{template_root_path}#{path}.erb"
   Makanai::Template.new(path: full_path).render
 end

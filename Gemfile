@@ -5,4 +5,6 @@ source 'https://rubygems.org'
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 gem 'rack'
+gem 'rake'
 gem 'rubocop', require: false
+gem 'sqlite3'
