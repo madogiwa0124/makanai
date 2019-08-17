@@ -1,0 +1,24 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title><%= @title %></title>
+</head>
+<body>
+  <table>
+    <thead>
+      <th>id</th>
+      <th>name</th>
+      <th>val</th>
+    </thead>
+    <tbody>
+      <% @numbers.each do |number| %>
+        <tr>
+          <td><%= number.id %></td>
+          <td><%= number.name %></td>
+          <td><%= number.val %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</body>
+</html>
