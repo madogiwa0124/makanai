@@ -126,11 +126,23 @@ end
 # execute `select * from numbers;` and get all records.
 Number.all
 #=> [
-#     #<Number:0x00007fc967a7c578 @attributes={"id"=>1, "name"=>"one", "val"=>1}, @id=1, @name="one", @val=1>
-#     #<Number:0x00007ffa55a60520 @attributes={"id"=>2, "name"=>"two", "val"=>2}, @id=2, @name="two", @val=2>
+#     #<Number:0x00007fc967a7c578 @origin_attributes={"id"=>1, "name"=>"one", "val"=>1}, @id=1, @name="one", @val=1>
+#     #<Number:0x00007ffa55a60520 @origin_attributes={"id"=>2, "name"=>"two", "val"=>2}, @id=2, @name="two", @val=2>
 #   ]
 
 # execute `select * from numbers where id = 1 LIMIT 1` and get record.
 Number.find(1)
-#=> #<Number:0x00007ffa5509f400 @attributes={"id"=>1, "name"=>"one", "val"=>1}, @id=1, @name="one", @val=1>
+#=> #<Number:0x00007ffa5509f400 @origin_attributes={"id"=>1, "name"=>"one", "val"=>1}, @id=1, @name="one", @val=1>
+
+# execute `insert into numbers(name, val) values ('one', 1);`
+Number.new(name: 'one', val: 1).create
+#=> #<Number:0x00007fca1c160dd0 @origin_attributes={"id"=>1, "name"=>"one", "val"=>1}, @id=1, @name="one", @val=1>
+
+# execute `update numbers set id=1, name='eins',val=1 where id = 1;`
+Number.find(1).tap { |num| num.name = 'eins' }.update
+#=> #<Number:0x00007fca1c160dd0 @origin_attributes={"id"=>2, "name"=>"zwei", "val"=>2}, @id=6, @name="zwei", @val=2>
+
+# execute `delete from numbers where id = 1;`
+Number.find(1).delete
+#=> nil
 ```
