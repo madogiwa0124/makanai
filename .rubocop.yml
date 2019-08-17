@@ -7,6 +7,9 @@ Style/Documentation:
 Metrics/LineLength:
   Max: 90
 
+Metrics/ClassLength:
+  Max: 120
+
 Style/ParallelAssignment:
   Enabled: false
 
