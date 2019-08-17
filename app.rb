@@ -11,8 +11,8 @@ router.get '/hoge' do
   'Hello Hoge!!'
 end
 
-router.get '/check' do |params|
-  params['hoge']
+router.get '/check' do |request|
+  request.params['hoge']
 end
 
 router.get '/index' do
@@ -25,4 +25,9 @@ router.get '/numbers' do
   @title = 'numbers'
   @numbers = Number.all
   render :numbers
+end
+
+router.post '/numbers' do |request|
+  Number.new(request.params).create
+  redirect_to("#{request.root_url}/numbers")
 end

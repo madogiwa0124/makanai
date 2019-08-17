@@ -15,4 +15,11 @@ def router
   @router ||= Makanai::Router.new
 end
 
+def redirect_to(url)
+  Makanai::Response.new.tap do |response|
+    response.status = 302
+    response.header = { 'Location' => url }
+  end
+end
+
 at_exit { Makanai::Application.new(router: @router).run! }

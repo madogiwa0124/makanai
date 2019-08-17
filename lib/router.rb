@@ -13,11 +13,11 @@ module Makanai
     end
 
     def get(path, &block)
-      @routes << Route.new(
-        path: path,
-        process: block,
-        method: 'GET'
-      )
+      @routes << Route.new(path: path, process: block, method: 'GET')
+    end
+
+    def post(path, &block)
+      @routes << Route.new(path: path, process: block, method: 'POST')
     end
 
     def bind!(url:, method:)
