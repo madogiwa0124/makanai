@@ -40,16 +40,20 @@ router.get '/hoge' do
 end
 
 # enable access to /params with get parameter
-router.get '/check' do |params|
-  params['hoge']
+router.get '/check' do |request|
+  request.params['hoge']
 end
 
-# TODO: post
-router.post '/resources' do |params|
+# enable access to /number with method post and redirect other url.
+router.post '/resources' do |request|
+  Number.new(request.params).create
+  redirect_to("#{request.root_url}/numbers")
 end
 
 # TODO: patch
-router.patch '/resources/:id' do |params|
+router.patch '/resources/:id' do |request|
+  Number.new(request.params).update
+  redirect_to("#{request.root_url}/numbers")
 end
 ```
 
