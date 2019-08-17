@@ -108,3 +108,29 @@ execute: makanai/src/migration/20190816_2_drop_numbers.sql
 drop table numbers;
 INFO: finished migration all
 ```
+
+## model
+`Makanai::Model` is simple ORM.
+It can be used by creating a class that inherits `Makanai::Model`.
+
+``` ruby
+require_relative '../../lib/model.rb'
+
+class Number < Makanai::Model
+  # target table when executing sql.
+  TABLE_NAME = 'numbers'
+  # primary key of the table.
+  PRYMARY_KEY = 'id'
+end
+
+# execute `select * from numbers;` and get all records.
+Number.all
+#=> [
+#     #<Number:0x00007fc967a7c578 @attributes={"id"=>1, "name"=>"one", "val"=>1}, @id=1, @name="one", @val=1>
+#     #<Number:0x00007ffa55a60520 @attributes={"id"=>2, "name"=>"two", "val"=>2}, @id=2, @name="two", @val=2>
+#   ]
+
+# execute `select * from numbers where id = 1 LIMIT 1` and get record.
+Number.find(1)
+#=> #<Number:0x00007ffa5509f400 @attributes={"id"=>1, "name"=>"one", "val"=>1}, @id=1, @name="one", @val=1>
+```
