@@ -20,6 +20,10 @@ module Makanai
       @routes << Route.new(path: path, process: block, method: 'POST')
     end
 
+    def put(path, &block)
+      @routes << Route.new(path: path, process: block, method: 'PUT')
+    end
+
     def bind!(url:, method:)
       path = URI.parse(url).path
       routes.find { |route| route.path == path && route.method == method }.tap do |route|

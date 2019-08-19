@@ -67,6 +67,11 @@ module Makanai
       end
     end
 
+    def assign_attributes(attributes)
+      attributes.each { |key, val| send("#{key}=", val) }
+      self
+    end
+
     def attributes
       origin_attributes.map { |key, _val| [key, send(key)] }.to_h
     end

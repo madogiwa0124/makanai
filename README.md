@@ -50,9 +50,10 @@ router.post '/resources' do |request|
   redirect_to("#{request.root_url}/numbers")
 end
 
-# TODO: patch
-router.patch '/resources/:id' do |request|
-  Number.new(request.params).update
+# enable access to /number with method put and redirect other url.
+router.put '/resources' do |request|
+  number = Number.find(request.params['id'])
+  number.assign_attributes(request.params).update
   redirect_to("#{request.root_url}/numbers")
 end
 ```

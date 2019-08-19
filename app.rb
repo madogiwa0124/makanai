@@ -31,3 +31,9 @@ router.post '/numbers' do |request|
   Number.new(request.params).create
   redirect_to("#{request.root_url}/numbers")
 end
+
+router.put '/numbers' do |request|
+  number = Number.find(request.params['id'])
+  number.assign_attributes(request.params).update
+  redirect_to("#{request.root_url}/numbers")
+end
