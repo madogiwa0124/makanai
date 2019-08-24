@@ -44,17 +44,24 @@ router.get '/check' do |request|
   request.params['hoge']
 end
 
-# enable access to /number with method post and redirect other url.
+# enable access to /resources with method post and redirect other url.
 router.post '/resources' do |request|
-  Number.new(request.params).create
-  redirect_to("#{request.root_url}/numbers")
+  Resource.new(request.params).create
+  redirect_to("#{request.root_url}/resources")
 end
 
-# enable access to /number with method put and redirect other url.
+# enable access to /resources with method put and redirect other url.
 router.put '/resources' do |request|
-  number = Number.find(request.params['id'])
-  number.assign_attributes(request.params).update
-  redirect_to("#{request.root_url}/numbers")
+  resource = Resource.find(request.params['id'])
+  resource.assign_attributes(request.params).update
+  redirect_to("#{request.root_url}/resources")
+end
+
+# enable access to /resources with method delete and redirect other url.
+router.delete '/resources' do |request|
+  resource = Resource.find(request.params['id'])
+  resource.assign_attributes(request.params).delete
+  redirect_to("#{request.root_url}/resources")
 end
 ```
 

@@ -37,3 +37,9 @@ router.put '/numbers' do |request|
   number.assign_attributes(request.params).update
   redirect_to("#{request.root_url}/numbers")
 end
+
+router.delete '/numbers' do |request|
+  number = Number.find(request.params['id'])
+  number.assign_attributes(request.params).delete
+  redirect_to("#{request.root_url}/numbers")
+end

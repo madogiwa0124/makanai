@@ -35,5 +35,12 @@
     <p>val: <input type="text" name="val" /></p>
     <input type="submit" value="送信">
   </form>
+  <hr>
+  <h3>Destroy</h3>
+  <form action="/numbers" method="post">
+    <input name="_method" type="hidden" value="DELETE">
+    <p>id: <input type="text" name="id" /></p>
+    <input type="submit" value="削除">
+  </form>
 </body>
 </html>
