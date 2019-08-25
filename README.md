@@ -103,7 +103,7 @@ makanai uses `sqlite3` as db. create db and migrate schema when executed `rake m
 $ rake makanai:db:migrate target=all
 
 # execute migraiton target sql
-$ rake makanai:db:migration target=20190816_1_create_numbers.sql
+$ rake makanai:db:migration target=20190816_1_create_resource.sql
 ```
 
 display information when excuted migration.
@@ -111,13 +111,13 @@ display information when excuted migration.
 ```
 $ rake makanai:db:migration target=all
 INFO: start migration all
-execute: makanai/src/migration/20190816_1_create_numbers.sql
-create table numbers (
+execute: makanai/src/migration/20190816_1_create_resources.sql
+create table resources (
   name varchar(30),
   val int
 );
-execute: makanai/src/migration/20190816_2_drop_numbers.sql
-drop table numbers;
+execute: makanai/src/migration/20190816_2_drop_resources.sql
+drop table resources;
 INFO: finished migration all
 ```
 
@@ -128,33 +128,33 @@ It can be used by creating a class that inherits `Makanai::Model`.
 ``` ruby
 require_relative '../../lib/model.rb'
 
-class Number < Makanai::Model
+class Resource < Makanai::Model
   # target table when executing sql.
-  TABLE_NAME = 'numbers'
+  TABLE_NAME = 'resources'
   # primary key of the table.
   PRYMARY_KEY = 'id'
 end
 
-# execute `select * from numbers;` and get all records.
-Number.all
+# execute `select * from resources;` and get all records.
+Resource.all
 #=> [
-#     #<Number:0x00007fc967a7c578 @origin_attributes={"id"=>1, "name"=>"one", "val"=>1}, @id=1, @name="one", @val=1>
-#     #<Number:0x00007ffa55a60520 @origin_attributes={"id"=>2, "name"=>"two", "val"=>2}, @id=2, @name="two", @val=2>
+#     #<Resource:0x00007fc967a7c578 @origin_attributes={"id"=>1, "name"=>"one", "val"=>1}, @id=1, @name="one", @val=1>
+#     #<Resource:0x00007ffa55a60520 @origin_attributes={"id"=>2, "name"=>"two", "val"=>2}, @id=2, @name="two", @val=2>
 #   ]
 
-# execute `select * from numbers where id = 1 LIMIT 1` and get record.
-Number.find(1)
-#=> #<Number:0x00007ffa5509f400 @origin_attributes={"id"=>1, "name"=>"one", "val"=>1}, @id=1, @name="one", @val=1>
+# execute `select * from resources where id = 1 LIMIT 1` and get record.
+Resource.find(1)
+#=> #<Resource:0x00007ffa5509f400 @origin_attributes={"id"=>1, "name"=>"one", "val"=>1}, @id=1, @name="one", @val=1>
 
-# execute `insert into numbers(name, val) values ('one', 1);`
-Number.new(name: 'one', val: 1).create
-#=> #<Number:0x00007fca1c160dd0 @origin_attributes={"id"=>1, "name"=>"one", "val"=>1}, @id=1, @name="one", @val=1>
+# execute `insert into resources(name, val) values ('one', 1);`
+Resource.new(name: 'one', val: 1).create
+#=> #<Resource:0x00007fca1c160dd0 @origin_attributes={"id"=>1, "name"=>"one", "val"=>1}, @id=1, @name="one", @val=1>
 
-# execute `update numbers set id=1, name='eins',val=1 where id = 1;`
-Number.find(1).tap { |num| num.name = 'eins' }.update
-#=> #<Number:0x00007fca1c160dd0 @origin_attributes={"id"=>2, "name"=>"zwei", "val"=>2}, @id=6, @name="zwei", @val=2>
+# execute `update resources set id=1, name='eins',val=1 where id = 1;`
+Resource.find(1).tap { |num| num.name = 'eins' }.update
+#=> #<Resource:0x00007fca1c160dd0 @origin_attributes={"id"=>2, "name"=>"zwei", "val"=>2}, @id=6, @name="zwei", @val=2>
 
-# execute `delete from numbers where id = 1;`
-Number.find(1).delete
+# execute `delete from resources where id = 1;`
+Resource.find(1).delete
 #=> nil
 ```
