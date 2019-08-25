@@ -21,8 +21,8 @@ module Makanai
     end
 
     def call(env)
-      @request = Request.new(env)
-      @response = Response.new
+      @request = Makanai::Request.new(env)
+      @response = Makanai::Response.new
       route_result = execute_route
       return route_result.result if route_result.class == Response
       @response.body << execute_route
