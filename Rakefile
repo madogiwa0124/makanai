@@ -13,9 +13,7 @@ namespace :makanai do
 
       puts "INFO: start migration #{ENV['target']}"
       target = ENV['target']
-      migration_root_path = "#{Dir.pwd}#{Makanai::Settings::MIGRATION_ROOT_PATH}"
-      db = SQLite3::Database.new Makanai::Settings::DATABASE_NAME
-
+      db = SQLite3::Database.new db_path
       if target == 'all'
         sql_paths = Dir.glob("#{migration_root_path}*")
         sql_paths.each { |sql_path| execute_sql(db: db, sql_path: sql_path) }

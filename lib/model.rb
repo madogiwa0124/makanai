@@ -50,8 +50,12 @@ module Makanai
       new(results.pop)
     end
 
+    def self.db_path
+      "#{Makanai::Settings::APP_ROOT_PATH}#{Makanai::Settings::DATABASE_PATH}"
+    end
+
     def self.connect_db
-      @db = SQLite3::Database.new Makanai::Settings::DATABASE_NAME
+      @db = SQLite3::Database.new db_path
       @db.tap { |db| db.results_as_hash = true }
     end
 
