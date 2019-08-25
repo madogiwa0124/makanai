@@ -2,7 +2,6 @@
 
 require_relative './template.rb'
 require_relative './router.rb'
-require_relative './request.rb'
 require_relative './response.rb'
 require_relative './application.rb'
 require_relative '../config/settings.rb'

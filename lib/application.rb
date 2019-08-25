@@ -3,6 +3,8 @@
 require 'json'
 require 'uri'
 require 'rack'
+require_relative './request.rb'
+require_relative './response.rb'
 require_relative './router.rb'
 
 module Makanai
