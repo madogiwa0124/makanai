@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-require 'sqlite3'
-require_relative '../config/settings.rb'
+require_relative './database.rb'
 
 module Makanai
   class Model
@@ -15,9 +14,7 @@ module Makanai
     attr_reader :origin_attributes
 
     def self.execute_sql(sql)
-      connect_db
-      puts "SQL: #{sql.gsub("\n", ' ')}"
-      @db.execute(sql).tap { close_db }
+      Makanai::Database.new.execute_sql(sql)
     end
 
     def self.all
@@ -48,19 +45,6 @@ module Makanai
         SQL
       )
       new(results.pop)
-    end
-
-    def self.db_path
-      "#{Makanai::Settings::APP_ROOT_PATH}#{Makanai::Settings::DATABASE_PATH}"
-    end
-
-    def self.connect_db
-      @db = SQLite3::Database.new db_path
-      @db.tap { |db| db.results_as_hash = true }
-    end
-
-    def self.close_db
-      @db.close
     end
 
     def self.buid_sql_text(value)
