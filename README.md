@@ -1,12 +1,31 @@
 # Makanai
 simple web application framework for learning.
 
+# Getting Start
+## Start sample project
+Getting started with Makanai is easy.
+
+```
+$ git clone https://github.com/Madogiwa0124/makanai.git
+$ bundle install
+$ cd makanai/sample
+$ be ruby app.rb
+[2019-09-09 23:20:05] INFO  WEBrick 1.4.2
+[2019-09-09 23:20:05] INFO  ruby 2.6.3 (2019-04-16) [x86_64-darwin18]
+[2019-09-09 23:20:05] INFO  WEBrick::HTTPServer#start: pid=30871 port=8080
+```
+
+## How to customize
+You can customize the Makanai project by changing the sample directory. (You can also change the directory name from the sample.)
+
+To see what features are available, see Usage.
+
 # Usage
 
 create a ruby ​​file(ex. app.rb).
 
 ``` ruby
-require_relative './lib/main.rb'
+require_relative '../lib/main.rb'
 
 router.get '/' do
   'Hello Makanai!'
@@ -27,7 +46,7 @@ When accessing root, `Hello Makanai!` is displayed.
 ## routing
 
 ``` ruby
-require_relative './lib/main.rb'
+require_relative '../lib/main.rb'
 
 # root path
 router.get '/' do
@@ -70,7 +89,7 @@ end
 Define instance variables used in the routing view.
 
 ``` ruby
-require_relative './lib/main.rb'
+require_relative '../lib/main.rb'
 
 router.get '/index' do
   @title = 'Makanai title'
