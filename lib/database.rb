@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'sqlite3'
-require_relative '../config/settings.rb'
+require_relative './settings.rb'
 
 module Makanai
   class Database

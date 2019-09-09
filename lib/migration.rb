@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../config/settings.rb'
+require_relative './settings.rb'
 require_relative './database.rb'
 
 module Makanai

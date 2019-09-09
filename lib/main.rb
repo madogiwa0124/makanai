@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
+require_relative './settings.rb'
 require_relative './template.rb'
 require_relative './router.rb'
 require_relative './response.rb'
 require_relative './application.rb'
-require_relative '../config/settings.rb'
 
 def render(path)
   template_root_path = "#{Dir.pwd}#{Makanai::Settings::TEMPLATE_ROOT_PATH}"
