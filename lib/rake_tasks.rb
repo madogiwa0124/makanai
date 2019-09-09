@@ -2,8 +2,7 @@
 
 require 'rake'
 require 'sqlite3'
-require_relative './lib/migration.rb'
-require_relative './config/settings.rb'
+require_relative './migration.rb'
 
 namespace :makanai do
   namespace :db do
