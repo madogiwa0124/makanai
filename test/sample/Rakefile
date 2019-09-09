@@ -1,0 +1,4 @@
+# frozen_string_literal: true
+
+require_relative './config/settings.rb'
+require_relative '../../lib/rake_tasks.rb'
