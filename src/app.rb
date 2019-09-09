@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative './lib/main.rb'
-require_relative './src/models/number.rb'
+require_relative '../lib/main.rb'
+require_relative './models/number.rb'
 
 router.get '/' do
   'Hello Makanai!'
