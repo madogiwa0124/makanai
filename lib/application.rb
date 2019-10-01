@@ -29,6 +29,8 @@ module Makanai
       @response.result
     end
 
+    private
+
     def execute_route
       router.bind!(url: request.url, method: request.method).process.call(request)
     rescue Makanai::Router::NotFound
