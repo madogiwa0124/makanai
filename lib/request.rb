@@ -9,11 +9,16 @@ module Makanai
     def initialize(env)
       super
       @env = env
-      @url = env['REQUEST_URI']
+      @url = build_url
       @origin_body = body&.read
       @query = parsed_url.query
       @params = build_params
       @method = build_method
+    end
+
+    def build_url
+      root = "#{env['rack.url_scheme']}://#{env['SERVER_NAME']}"
+      root + ":#{env['SERVER_PORT']}#{env['PATH_INFO']}"
     end
 
     def root_url
