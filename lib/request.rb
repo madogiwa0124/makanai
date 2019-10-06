@@ -18,7 +18,8 @@ module Makanai
 
     def build_url
       root = "#{env['rack.url_scheme']}://#{env['SERVER_NAME']}"
-      root + ":#{env['SERVER_PORT']}#{env['PATH_INFO']}"
+      root += ":#{env['SERVER_PORT']}#{env['PATH_INFO']}"
+      root + "?#{env['QUERY_STRING']}" if env['QUERY_STRING']
     end
 
     def root_url
