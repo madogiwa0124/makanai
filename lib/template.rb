@@ -8,7 +8,7 @@ module Makanai
       @path = path
     end
 
-    attr_reader :path, :engine
+    attr_reader :path
 
     def render
       template_file = File.read(path)
