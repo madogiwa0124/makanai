@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../sample/config/settings.rb'
 require_relative '../../lib/main.rb'
 require_relative './models/number.rb'
 
