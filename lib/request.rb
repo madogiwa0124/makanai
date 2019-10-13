@@ -6,6 +6,8 @@ require 'uri'
 
 module Makanai
   class Request < Rack::Request
+    attr_reader :env, :url, :query, :origin_body, :method, :params
+
     def initialize(env)
       super
       @env = env
@@ -16,14 +18,16 @@ module Makanai
       @method = build_method
     end
 
+    def root_url
+      @root_url ||= "#{parsed_url.scheme}://#{parsed_url.host}:#{parsed_url.port}"
+    end
+
+    private
+
     def build_url
       root = "#{env['rack.url_scheme']}://#{env['SERVER_NAME']}"
       root += ":#{env['SERVER_PORT']}#{env['PATH_INFO']}"
-      root + "?#{env['QUERY_STRING']}" if env['QUERY_STRING']
-    end
-
-    def root_url
-      @root_url ||= "#{parsed_url.scheme}://#{parsed_url.host}:#{parsed_url.port}"
+      env['QUERY_STRING'] ? (root + "?#{env['QUERY_STRING']}") : root
     end
 
     def parsed_body
@@ -49,7 +53,5 @@ module Makanai
         return parsed_body if origin_body
       end
     end
-
-    attr_reader :env, :url, :query, :origin_body, :method, :params
   end
 end
