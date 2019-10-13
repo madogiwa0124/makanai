@@ -2,6 +2,13 @@
 simple web application framework for learning.
 
 # Getting Start
+
+## Dependencies
+
+Makanai depends on the following, so please install it in advance.
+
+* [SQLite3](https://www.sqlite.org/index.html)
+
 ## Start sample project
 Getting started with Makanai is easy.
 
