@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../lib/main.rb'
+require 'makanai/main'
 require_relative './models/number.rb'
 
 router.get '/' do

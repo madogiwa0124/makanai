@@ -1,3 +1,11 @@
+PATH
+  remote: .
+  specs:
+    makanai (0.1.0)
+      rack (~> 2.0.7)
+      rake (~> 10.0)
+      sqlite3 (~> 1.4.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -9,7 +17,7 @@ GEM
       ast (~> 2.4.0)
     rack (2.0.7)
     rainbow (3.0.0)
-    rake (12.3.3)
+    rake (10.5.0)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
       rspec-expectations (~> 3.8.0)
@@ -38,10 +46,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  rack
-  rake
-  rspec
-  rubocop
+  bundler (~> 2.0)
+  makanai!
+  rspec (~> 3.0)
+  rubocop (~> 0.74)
   sqlite3
 
 BUNDLED WITH

@@ -1,5 +1,7 @@
 AllCops:
   TargetRubyVersion: 2.6.3
+  Exclude:
+    - './makanai.gemspec'
 
 Style/Documentation:
   Enabled: false

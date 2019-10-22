@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 require 'ostruct'
-require 'spec_helper'
-require_relative '../lib/template'
+require 'makanai/template'
 
-describe Makanai::Template do
+RSpec.describe Makanai::Template do
   describe '#render' do
     let(:template) { Makanai::Template.new(path: 'test.erb') }
     let(:erb_text) { 'result: <%= 1+1 %>' }
