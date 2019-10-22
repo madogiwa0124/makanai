@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe Makani do
+RSpec.describe Makanai do
   it 'has a version number' do
-    expect(Makani::VERSION).not_to be nil
+    expect(Makanai::VERSION).not_to be nil
   end
 end
