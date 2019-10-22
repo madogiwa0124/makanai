@@ -4,6 +4,7 @@ PATH
     makanai (0.1.0)
       rack (~> 2.0.7)
       rake (~> 10.0)
+      sqlite3 (~> 1.4.1)
 
 GEM
   remote: https://rubygems.org/
