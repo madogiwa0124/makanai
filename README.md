@@ -149,11 +149,11 @@ Create an erb file in `src/views` with the name specified in render.
 
 ## migration
 
-makanai uses `sqlite3` as db. create db and migrate schema when executed `rake makanai:db:migrate`.
+makanai uses `sqlite3` as db. create db and migrate schema when executed `rake makanai:db:migration`.
 
 ```
 # execute all migraiton sql
-$ rake makanai:db:migrate target=all
+$ rake makanai:db:migration target=all
 
 # execute migraiton target sql
 $ rake makanai:db:migration target=20190816_1_create_resource.sql
