@@ -50,7 +50,6 @@ DEPENDENCIES
   makanai!
   rspec (~> 3.0)
   rubocop (~> 0.74)
-  sqlite3
 
 BUNDLED WITH
    2.0.2
