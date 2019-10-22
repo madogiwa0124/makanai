@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
-require_relative '../lib/dsl.rb'
+require 'makanai/dsl'
 
-describe Makanai::Application do
+RSpec.describe Makanai::Application do
   describe '#render' do
     # TODO: Not only be called, but also validate the rendered result.
     before do

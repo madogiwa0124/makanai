@@ -1,3 +1,8 @@
+PATH
+  remote: .
+  specs:
+    makani (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -38,6 +43,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler (~> 2.0)
+  makani!
   rack
   rake
   rspec

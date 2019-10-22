@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 require 'ostruct'
-require 'spec_helper'
-require_relative '../lib/request'
+require 'makanai/request'
 
-describe Makanai::Request do
+RSpec.describe Makanai::Request do
   describe '.initialize' do
     let(:env) do
       {

@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
-require_relative '../lib/router.rb'
+require 'makanai/router'
 
-describe Makanai::Router do
+RSpec.describe Makanai::Router do
   describe '#get' do
     let(:router) { Makanai::Router.new }
     before { router.get('/') { 'Hello World' } }
