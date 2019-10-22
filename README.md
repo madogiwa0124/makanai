@@ -3,6 +3,22 @@ simple web application framework for learning.
 
 # Getting Start
 
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'makanai'
+```
+
+And then execute:
+
+    $ bundle install
+
+Or install it yourself as:
+
+    $ gem install makanai
+
 ## Dependencies
 
 Makanai depends on the following, so please install it in advance.
@@ -195,3 +211,15 @@ Resource.find(1).tap { |num| num.name = 'eins' }.update
 Resource.find(1).delete
 #=> nil
 ```
+
+# Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/Madogiwa0124/makanai. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+# License
+
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+# Code of Conduct
+
+Everyone interacting in the makanai project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/Madogiwa0124/makanai/blob/master/CODE_OF_CONDUCT.md).
