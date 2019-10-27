@@ -42,11 +42,6 @@ $ be ruby app.rb
 [2019-09-09 23:20:05] INFO  WEBrick::HTTPServer#start: pid=30871 port=8080
 ```
 
-## How to customize
-You can customize the Makanai project by changing the sample directory. (You can also change the directory name from the sample.)
-
-To see what features are available, see Usage.
-
 # Usage
 
 create a ruby ​​file(ex. app.rb).
