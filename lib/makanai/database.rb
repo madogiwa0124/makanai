@@ -20,6 +20,8 @@ module Makanai
       db.execute(sql).tap { close_db }
     end
 
+    private
+
     def close_db
       db.close
     end
