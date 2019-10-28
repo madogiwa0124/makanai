@@ -7,9 +7,9 @@ module Makanai
   class Database
     DATABASE_PATH = "#{Settings::APP_ROOT_PATH}#{Settings::DATABASE_PATH}"
 
-    def initialize
+    def initialize(path: DATABASE_PATH)
       @handler = SQLite3::Database
-      @db = handler.new DATABASE_PATH
+      @db = handler.new path
       db.tap { |db| db.results_as_hash = true }
     end
 
