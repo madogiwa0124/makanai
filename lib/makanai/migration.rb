@@ -5,10 +5,10 @@ require_relative './database.rb'
 
 module Makanai
   module Migration
-    def execute_sql(sql_path:)
+    def execute_sql(sql_path:, db: Makanai::Database.new)
       sql = File.read(sql_path)
       puts "execute: #{sql_path}"
-      Makanai::Database.new.execute_sql(sql)
+      db.execute_sql(sql)
     end
 
     def migration_root_path
