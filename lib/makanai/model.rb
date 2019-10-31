@@ -78,7 +78,6 @@ module Makanai
         VALUES (#{insert_values.join(',')});
       SQL
       self.class.execute_sql(sql, db)
-      @origin_attributes = self.class.last.attributes
       difine_attribute_methods
       self
     end
