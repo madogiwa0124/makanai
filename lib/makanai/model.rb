@@ -34,6 +34,16 @@ module Makanai
       new(results.pop)
     end
 
+    def self.first(db = Makanai::Database.new)
+      sql = <<~SQL
+        SELECT *
+        FROM #{self::TABLE_NAME}
+        ORDER BY #{self::PRYMARY_KEY} ASC
+        LIMIT 1;
+      SQL
+      new(execute_sql(sql, db).pop)
+    end
+
     def self.last(db = Makanai::Database.new)
       sql = <<~SQL
         SELECT *
