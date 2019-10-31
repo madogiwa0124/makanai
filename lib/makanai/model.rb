@@ -13,38 +13,35 @@ module Makanai
 
     attr_reader :origin_attributes
 
-    def self.execute_sql(sql)
-      Makanai::Database.new.execute_sql(sql)
+    def self.execute_sql(sql, db = Makanai::Database.new)
+      db.execute_sql(sql)
     end
 
-    def self.all
-      results = execute_sql("SELECT * FROM #{self::TABLE_NAME};")
+    def self.all(db = Makanai::Database.new)
+      results = execute_sql("SELECT * FROM #{self::TABLE_NAME};", db)
       results.map { |result| new(result) }
     end
 
-    def self.find(key)
-      results = execute_sql(
-        <<~SQL
-          SELECT *
-          FROM #{self::TABLE_NAME}
-          WHERE #{self::PRYMARY_KEY} = #{buid_sql_text(key)}
-          LIMIT 1;
-        SQL
-      )
+    def self.find(key, db = Makanai::Database.new)
+      sql = <<~SQL
+        SELECT *
+        FROM #{self::TABLE_NAME}
+        WHERE #{self::PRYMARY_KEY} = #{buid_sql_text(key)}
+        LIMIT 1;
+      SQL
+      results = execute_sql(sql, db)
       raise Makanai::Model::NotFound if results.empty?
       new(results.pop)
     end
 
-    def self.last
-      results = execute_sql(
-        <<~SQL
-          SELECT *
-          FROM #{self::TABLE_NAME}
-          ORDER BY #{self::PRYMARY_KEY} DESC
-          LIMIT 1;
-        SQL
-      )
-      new(results.pop)
+    def self.last(db = Makanai::Database.new)
+      sql = <<~SQL
+        SELECT *
+        FROM #{self::TABLE_NAME}
+        ORDER BY #{self::PRYMARY_KEY} DESC
+        LIMIT 1;
+      SQL
+      new(execute_sql(sql, db).pop)
     end
 
     def self.buid_sql_text(value)
@@ -64,39 +61,36 @@ module Makanai
       origin_attributes.map { |key, _val| [key, send(key)] }.to_h
     end
 
-    def create
-      self.class.execute_sql(
-        <<~SQL
-          INSERT
-          INTO #{self.class::TABLE_NAME}(#{clumns.join(',')})
-          VALUES (#{insert_values.join(',')});
-        SQL
-      )
+    def create(db = Makanai::Database.new)
+      sql = <<~SQL
+        INSERT
+        INTO #{self.class::TABLE_NAME}(#{clumns.join(',')})
+        VALUES (#{insert_values.join(',')});
+      SQL
+      self.class.execute_sql(sql, db)
       @origin_attributes = self.class.last.attributes
       difine_attribute_methods
       self
     end
 
-    def update
-      self.class.execute_sql(
-        <<~SQL
-          UPDATE #{self.class::TABLE_NAME}
-          SET #{update_values.join(',')}
-          WHERE #{self.class::PRYMARY_KEY} = #{self.class.buid_sql_text(send(self.class::PRYMARY_KEY))};
-        SQL
-      )
+    def update(db = Makanai::Database.new)
+      sql = <<~SQL
+        UPDATE #{self.class::TABLE_NAME}
+        SET #{update_values.join(',')}
+        WHERE #{self.class::PRYMARY_KEY} = #{self.class.buid_sql_text(send(self.class::PRYMARY_KEY))};
+      SQL
+      self.class.execute_sql(sql, db)
       @origin_attributes = attributes
       difine_attribute_methods
       self
     end
 
-    def delete
-      self.class.execute_sql(
-        <<~SQL
-          DELETE FROM #{self.class::TABLE_NAME}
-          WHERE #{self.class::PRYMARY_KEY} = #{self.class.buid_sql_text(send(self.class::PRYMARY_KEY))};
-        SQL
-      )
+    def delete(db = Makanai::Database.new)
+      sql = <<~SQL
+        DELETE FROM #{self.class::TABLE_NAME}
+        WHERE #{self.class::PRYMARY_KEY} = #{self.class.buid_sql_text(send(self.class::PRYMARY_KEY))};
+      SQL
+      self.class.execute_sql(sql, db)
       nil
     end
 
