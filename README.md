@@ -37,9 +37,9 @@ $ git clone https://github.com/Madogiwa0124/makanai.git
 $ bundle install
 $ cd makanai/sample
 $ be ruby app.rb
-[2019-09-09 23:20:05] INFO  WEBrick 1.4.2
-[2019-09-09 23:20:05] INFO  ruby 2.6.3 (2019-04-16) [x86_64-darwin18]
-[2019-09-09 23:20:05] INFO  WEBrick::HTTPServer#start: pid=30871 port=8080
+[2019-11-08 21:46:37] INFO  WEBrick 1.4.2
+[2019-11-08 21:46:37] INFO  ruby 2.6.5 (2019-10-01) [x86_64-darwin18]
+[2019-11-08 21:46:37] INFO  WEBrick::HTTPServer#start: pid=45946 port=8080
 ```
 
 # Usage
@@ -58,9 +58,9 @@ start server(WEBrick) at  execute `$ ruby app.rb`.
 
 ```
 $ ruby app.rb
-[2019-08-12 20:44:20] INFO  WEBrick 1.4.2
-[2019-08-12 20:44:20] INFO  ruby 2.6.3 (2019-04-16) [x86_64-darwin18]
-[2019-08-12 20:44:20] INFO  WEBrick::HTTPServer#start: pid=26043 port=8080
+[2019-11-08 21:46:37] INFO  WEBrick 1.4.2
+[2019-11-08 21:46:37] INFO  ruby 2.6.5 (2019-10-01) [x86_64-darwin18]
+[2019-11-08 21:46:37] INFO  WEBrick::HTTPServer#start: pid=45946 port=8080
 ```
 
 When accessing root, `Hello Makanai!` is displayed.
