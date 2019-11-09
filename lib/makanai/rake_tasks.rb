@@ -3,8 +3,21 @@
 require 'rake'
 require 'sqlite3'
 require_relative './migration.rb'
+require_relative './generator.rb'
 
 namespace :makanai do
+  namespace :initialize do
+    desc 'create directies and files for makanai initialization.'
+    task :app do
+      generator = Makanai::Generator.new
+      puts 'INFO: start ganerate app'
+      puts generator.create_app_directories
+      puts generator.create_app_rb
+      puts generator.create_rakefile
+      puts 'INFO: finished ganerate app'
+    end
+  end
+
   namespace :db do
     desc 'execute migration'
     task :migration do
