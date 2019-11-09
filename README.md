@@ -33,10 +33,10 @@ Makanai depends on the following, so please install it in advance.
 Getting started with Makanai is easy.
 
 ```
-$ git clone https://github.com/Madogiwa0124/makanai.git
-$ bundle install
-$ cd makanai/sample
-$ be ruby app.rb
+$ mkdir sample
+$ cd sample
+$ makanai init
+$ ruby app.rb
 [2019-11-08 21:46:37] INFO  WEBrick 1.4.2
 [2019-11-08 21:46:37] INFO  ruby 2.6.5 (2019-10-01) [x86_64-darwin18]
 [2019-11-08 21:46:37] INFO  WEBrick::HTTPServer#start: pid=45946 port=8080

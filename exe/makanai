@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require 'makanai'
+require 'makanai/rake_tasks'
+
+if ARGV[0] == 'init'
+  Rake::Task['makanai:initialize:app'].execute
+end
