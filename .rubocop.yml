@@ -15,6 +15,7 @@ Metrics/ClassLength:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
+    - 'lib/makanai/rake_tasks.rb'
 
 Style/ParallelAssignment:
   Enabled: false
