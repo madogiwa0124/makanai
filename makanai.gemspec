@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "rake", "~> 10.0"
+  spec.add_dependency "rake", ">= 10", "< 14"
   spec.add_dependency "rack", "~> 2.0.7"
   spec.add_dependency "sqlite3", "~> 1.4.1"
   spec.add_development_dependency "rubocop", "~> 0.74"
