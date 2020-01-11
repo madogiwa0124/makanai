@@ -18,6 +18,9 @@ module Makanai
 
     def run!
       handler.run self
+    rescue Interrupt
+      handler.shutdown
+      puts "==== Goodbye! :) ===="
     end
 
     def call(env)
