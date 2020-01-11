@@ -3,12 +3,6 @@ AllCops:
   Exclude:
     - './makanai.gemspec'
 
-Style/Documentation:
-  Enabled: false
-
-Metrics/LineLength:
-  Max: 90
-
 Metrics/ClassLength:
   Max: 120
 
@@ -17,8 +11,14 @@ Metrics/BlockLength:
     - 'spec/**/*'
     - 'lib/makanai/rake_tasks.rb'
 
+Style/Documentation:
+  Enabled: false
+
 Style/ParallelAssignment:
   Enabled: false
+
+Layout/LineLength:
+  Max: 90
 
 Layout/EmptyLineAfterGuardClause:
   Enabled: false
