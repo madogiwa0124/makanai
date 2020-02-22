@@ -1,4 +1,6 @@
-require "makanai/version"
+# frozen_string_literal: true
+
+require 'makanai/version'
 
 module Makanai
   def self.root

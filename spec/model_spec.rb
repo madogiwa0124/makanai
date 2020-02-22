@@ -199,8 +199,8 @@ RSpec.describe Makanai::Model do
 
   describe '#attributes' do
     it 'return object attributes' do
-      attributes ={ name: 'hoge', val: 'fuga' }
-      expect(SampleModel.new(attributes).attributes).to eq  attributes
+      attributes = { name: 'hoge', val: 'fuga' }
+      expect(SampleModel.new(attributes).attributes).to eq attributes
     end
   end
 end

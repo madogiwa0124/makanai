@@ -2,6 +2,7 @@ AllCops:
   TargetRubyVersion: 2.7.0
   Exclude:
     - './makanai.gemspec'
+    - 'vendor/**/*'
 
 Metrics/ClassLength:
   Max: 120
@@ -16,6 +17,15 @@ Style/Documentation:
 
 Style/ParallelAssignment:
   Enabled: false
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
 
 Layout/LineLength:
   Max: 90

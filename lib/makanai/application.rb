@@ -20,7 +20,7 @@ module Makanai
       handler.run self
     rescue Interrupt
       handler.shutdown
-      puts "==== Goodbye! :) ===="
+      puts '==== Goodbye! :) ===='
     end
 
     def call(env)

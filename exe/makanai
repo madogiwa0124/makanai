@@ -1,8 +1,7 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require 'makanai'
 require 'makanai/rake_tasks'
 
-if ARGV[0] == 'init'
-  Rake::Task['makanai:initialize:app'].execute
-end
+Rake::Task['makanai:initialize:app'].execute if ARGV[0] == 'init'
