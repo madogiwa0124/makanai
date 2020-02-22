@@ -12,7 +12,7 @@ module Makanai
     end
 
     def migration_root_path
-      "#{Settings::APP_ROOT_PATH}#{Settings::MIGRATION_ROOT_PATH}"
+      Settings.migration_full_path
     end
   end
 end

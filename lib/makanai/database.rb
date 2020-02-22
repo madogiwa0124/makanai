@@ -5,9 +5,7 @@ require_relative './settings.rb'
 
 module Makanai
   class Database
-    DATABASE_PATH = "#{Settings::APP_ROOT_PATH}#{Settings::DATABASE_PATH}"
-
-    def initialize(path: DATABASE_PATH)
+    def initialize(path: Settings.database_full_path)
       @handler = SQLite3::Database
       @db = handler.new path
       db.tap { |db| db.results_as_hash = true }

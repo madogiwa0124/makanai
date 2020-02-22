@@ -5,8 +5,8 @@ require_relative './response.rb'
 require_relative './settings.rb'
 
 def render(path)
-  template_root_path = "#{Dir.pwd}#{Makanai::Settings::TEMPLATE_ROOT_PATH}"
-  full_path = "#{template_root_path}#{path}.erb"
+  template_root_path = Makanai::Settings.template_full_path
+  full_path = File.join(template_root_path, "#{path}.erb")
   Makanai::Template.new(path: full_path).render
 end
 
