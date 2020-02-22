@@ -5,7 +5,7 @@ require 'makanai/database'
 require 'makanai/settings'
 
 RSpec.describe Makanai::Database do
-  let(:root) { Makanai::Settings::APP_ROOT_PATH }
+  let(:root) { Makanai::Settings.app_root_path }
 
   describe '.initialize' do
     let(:object) { Makanai::Database.new(path: "#{root}/spec/db/makanai.db") }

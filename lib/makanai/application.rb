@@ -3,6 +3,7 @@
 require 'json'
 require 'uri'
 require 'rack'
+require_relative './settings.rb'
 require_relative './request.rb'
 require_relative './response.rb'
 require_relative './router.rb'
@@ -11,13 +12,15 @@ module Makanai
   class Application
     def initialize(router:)
       @router = router
-      @handler = Rack::Handler::WEBrick
+      @config = Settings
     end
 
-    attr_reader :router, :handler, :request, :response
+    attr_reader :router, :config, :request, :response
 
     def run!
-      handler.run self
+      app_config = config.rack_app_config
+      handler = Rack::Handler.get(app_config[:handler])
+      handler.run(self, { Host: app_config[:host], Port: app_config[:port] })
     rescue Interrupt
       handler.shutdown
       puts '==== Goodbye! :) ===='

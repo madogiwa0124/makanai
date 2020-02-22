@@ -4,12 +4,12 @@ require 'makanai/migration'
 require 'makanai/settings'
 
 RSpec.describe Makanai::Migration do
-  let(:root) { Makanai::Settings::APP_ROOT_PATH }
+  let(:root) { Makanai::Settings.app_root_path }
   let(:migratable_object) { Class.new { include Makanai::Migration }.new }
 
   describe '#migration_root_path' do
     it 'return migration root path.' do
-      migration_path = Makanai::Settings::MIGRATION_ROOT_PATH
+      migration_path = Makanai::Settings.migration_root_path
       expect(migratable_object.migration_root_path).to eq "#{root}#{migration_path}"
     end
   end

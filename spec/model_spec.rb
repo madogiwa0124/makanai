@@ -6,7 +6,7 @@ require 'makanai/database'
 require 'makanai/settings'
 
 RSpec.describe Makanai::Model do
-  let(:root) { Makanai::Settings::APP_ROOT_PATH }
+  let(:root) { Makanai::Settings.app_root_path }
 
   class SampleModel < Makanai::Model
     TABLE_NAME = 'numbers'

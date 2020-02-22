@@ -76,10 +76,34 @@ root ┬ app.rb    # main application file
      └ db        # use Sqlite3 dabase file
 ```
 
+## override application config
+
+You can overwrite the settings (`Makanai :: Settings`) with the created ruby ​​file(ex. app.rb).
+
+ex) When overriding rack app settings.
+
+``` ruby
+Makanai::Settings.rack_app_config = { handler: :webrick, host: '0.0.0.0', port: '8081' }
+```
+
+### use other application server
+
+Add rack web server(ex. puma) gem in your Gemfile.
+
+``` ruby
+gem 'puma'
+```
+
+Overwrite the `handler` in `rack_app_config` with the created ruby ​​file(ex. app.rb).
+
+``` ruby
+Makanai::Settings.rack_app_config = { handler: :puma, host: '0.0.0.0', port: '8080' }
+```
+
 ## routing
 
 ``` ruby
-require_relative '../lib/main.rb'
+require 'makanai/main'
 
 # root path
 router.get '/' do
@@ -122,7 +146,7 @@ end
 Define instance variables used in the routing view.
 
 ``` ruby
-require_relative '../lib/main.rb'
+require 'makanai/main'
 
 router.get '/index' do
   @title = 'Makanai title'
@@ -178,7 +202,7 @@ INFO: finished migration all
 It can be used by creating a class that inherits `Makanai::Model`.
 
 ``` ruby
-require_relative '../../lib/model.rb'
+require 'makanai/model'
 
 class Resource < Makanai::Model
   # target table when executing sql.
