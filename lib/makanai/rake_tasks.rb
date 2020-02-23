@@ -29,7 +29,7 @@ namespace :makanai do
         sql_paths = Dir.glob("#{migration_root_path}*")
         sql_paths.each { |sql_path| execute_sql(sql_path: sql_path) }
       else
-        execute_sql(sql_path: "#{migration_root_path}#{target}")
+        execute_sql(sql_path: File.join(migration_root_path, target))
       end
       puts "INFO: finished migration #{ENV['target']}"
     end
