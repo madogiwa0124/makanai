@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'ostruct'
 require 'makanai/database'
 require 'makanai/settings'
 
@@ -14,38 +13,26 @@ RSpec.describe Makanai::Database do
       expect(object.class).to eq Makanai::Database
     end
 
-    it 'hander is SQLite3::Database.' do
-      expect(object.handler).to eq SQLite3::Database
-    end
-
-    it 'db is SQLite3::Database object.' do
-      expect(object.db.class).to eq SQLite3::Database
-    end
-
-    it 'db.results_as_hash is true.' do
-      expect(object.db.results_as_hash).to eq true
+    context 'client is not cofigured.' do
+      it 'default client is Makanai::Dbms::Sqlite.' do
+        expect(object.client.class).to eq Makanai::Dbms::Sqlite
+      end
     end
   end
 
   describe '#execute_sql' do
-    let(:path) { "#{root}/spec/db/makanai.db" }
-    let(:create_table_sql) { File.read("#{root}/spec/migration/create_numbers.sql") }
-    let(:drop_table_sql) { File.read("#{root}/spec/migration/drop_numbers.sql") }
-    let(:show_tables_sql) { "select name from sqlite_master where type='table';" }
-
-    def create_and_drop_numbers(&block)
-      Makanai::Database.new(path: path).execute_sql(create_table_sql)
-      result = block.call
-      Makanai::Database.new(path: path).execute_sql(drop_table_sql)
-      result
-    end
-
     before { allow(STDOUT).to receive(:puts) }
 
     it 'created numbar table.' do
-      db = Makanai::Database.new(path: path)
-      result = create_and_drop_numbers { db.execute_sql(show_tables_sql) }
-      expect(result.map { |table| table['name'] }).to include 'numbers'
+      client = Class.new do
+        def initialize(path); end
+
+        def execute_sql(sql)
+          sql
+        end
+      end
+      db = Makanai::Database.new(client: client, path: 'path')
+      expect(db.execute_sql('sql')).to eq 'sql'
     end
   end
 end

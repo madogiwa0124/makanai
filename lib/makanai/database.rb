@@ -1,27 +1,19 @@
 # frozen_string_literal: true
 
-require 'sqlite3'
+require_relative './dbms/sqlite.rb'
 require_relative './settings.rb'
 
 module Makanai
   class Database
-    def initialize(path: Settings.database_full_path)
-      @handler = SQLite3::Database
-      @db = handler.new path
-      db.tap { |db| db.results_as_hash = true }
+    def initialize(client: Dbms::Sqlite, path: Settings.database_full_path)
+      @client = client.new(path)
     end
 
-    attr_reader :handler, :db
+    attr_reader :client
 
     def execute_sql(sql)
       puts "SQL: #{sql.gsub("\n", ' ')}"
-      db.execute(sql).tap { close_db }
-    end
-
-    private
-
-    def close_db
-      db.close
+      client.execute_sql(sql)
     end
   end
 end
