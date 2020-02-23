@@ -47,7 +47,7 @@ $ ruby app.rb
 create a ruby ​​file(ex. app.rb).
 
 ``` ruby
-require_relative '../lib/main.rb'
+require 'makanai/main'
 
 router.get '/' do
   'Hello Makanai!'
