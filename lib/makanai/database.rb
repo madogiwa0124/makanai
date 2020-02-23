@@ -5,8 +5,15 @@ require_relative './settings.rb'
 
 module Makanai
   class Database
-    def initialize(client: Dbms::Sqlite, path: Settings.database_full_path)
-      @client = client.new(path)
+    class UnsupportedException < StandardError; end
+
+    def initialize(client: Dbms::Sqlite, config: { path: Settings.database_full_path })
+      case client.name
+      when Makanai::Dbms::Sqlite.name
+        @client = client.new(config[:path])
+      else
+        raise UnsupportedException
+      end
     end
 
     attr_reader :client

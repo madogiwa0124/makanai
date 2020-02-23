@@ -7,7 +7,7 @@ RSpec.describe Makanai::Database do
   let(:root) { Makanai::Settings.app_root_path }
 
   describe '.initialize' do
-    let(:object) { Makanai::Database.new(path: "#{root}/spec/db/makanai.db") }
+    let(:object) { Makanai::Database.new(config: { path: "#{root}/spec/db/makanai.db" }) }
 
     it 'return Makanai::Database Object.' do
       expect(object.class).to eq Makanai::Database
@@ -30,8 +30,12 @@ RSpec.describe Makanai::Database do
         def execute_sql(sql)
           sql
         end
+
+        def self.name
+          Makanai::Dbms::Sqlite.name
+        end
       end
-      db = Makanai::Database.new(client: client, path: 'path')
+      db = Makanai::Database.new(client: client, config: { path: 'path' })
       expect(db.execute_sql('sql')).to eq 'sql'
     end
   end

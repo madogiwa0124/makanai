@@ -21,17 +21,17 @@ RSpec.describe Makanai::Migration do
 
     before do
       allow(STDOUT).to receive(:puts)
-      db = Makanai::Database.new(path: path)
+      db = Makanai::Database.new(config: { path: path })
       migratable_object.execute_sql(sql_path: create_table_sql_path, db: db)
     end
 
     after do
       drop_table_sql = File.read("#{root}/spec/migration/drop_numbers.sql")
-      Makanai::Database.new(path: path).execute_sql(drop_table_sql)
+      Makanai::Database.new(config: { path: path }).execute_sql(drop_table_sql)
     end
 
     it 'created numbar table.' do
-      result = Makanai::Database.new(path: path).execute_sql(show_tables_sql)
+      result = Makanai::Database.new(config: { path: path }).execute_sql(show_tables_sql)
       expect(result.map { |table| table['name'] }).to include 'numbers'
     end
   end

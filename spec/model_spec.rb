@@ -39,7 +39,7 @@ RSpec.describe Makanai::Model do
     let(:drop_table_sql) { File.read("#{root}/spec/migration/drop_numbers.sql") }
 
     def build_db
-      Makanai::Database.new(path: "#{root}/spec/db/makanai.db")
+      Makanai::Database.new(config: { path: "#{root}/spec/db/makanai.db" })
     end
 
     def create_number_sql(id, name, val)
