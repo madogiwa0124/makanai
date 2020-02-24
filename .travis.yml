@@ -4,8 +4,11 @@ language: ruby
 cache: bundler
 services:
   - postgresql
+  - mysql
 rvm:
   - 2.7.0
-before_install: gem install bundler -v 2.0.2
+before_install:
+  - gem install bundler -v 2.0.2
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS makanai;'
 before_script:
   - psql -c 'create database makanai;' -U postgres
