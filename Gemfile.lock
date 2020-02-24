@@ -15,6 +15,7 @@ GEM
     parallel (1.19.1)
     parser (2.7.0.2)
       ast (~> 2.4.0)
+    pg (1.2.2)
     rack (2.2.2)
     rainbow (3.0.0)
     rake (13.0.1)
@@ -50,6 +51,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 2.0)
   makanai!
+  pg (~> 1.2)
   rspec (~> 3.0)
   rubocop (~> 0.74)
 
