@@ -19,11 +19,11 @@ module Makanai
     @rack_app_config = DEFAULT_RACK_APP_CONFIG
 
     # NOTE: Use Sqlite3
-    @databse_client = Dbms::Sqlite
+    @databse_client = :sqlite
     @databse_config = { path: File.join(@app_root_path, @database_path) }
 
     # NOTE: Use Postgresql
-    # @databse_client = Dbms::Postgres
+    # @databse_client = :postgres
     # @databse_config = {
     #   host: 'localhost',
     #   password: nil,

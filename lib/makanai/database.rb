@@ -8,12 +8,8 @@ module Makanai
     class UnsupportedException < StandardError; end
 
     def initialize(client: Settings.databse_client, config: Settings.databse_config)
-      case client.name
-      when Makanai::Dbms::Sqlite.name, Makanai::Dbms::Postgres.name
-        @client = client.new(config)
-      else
-        raise UnsupportedException
-      end
+      client_class = client_class(client)
+      @client = client_class.new(config)
     end
 
     attr_reader :client
@@ -21,6 +17,15 @@ module Makanai
     def execute_sql(sql)
       puts "SQL: #{sql.gsub("\n", ' ')}"
       client.execute_sql(sql)
+    end
+
+    private
+
+    def client_class(client)
+      require_relative File.join('dbms', client.to_s)
+      Object.const_get("Makanai::Dbms::#{client.capitalize}")
+    rescue LoadError
+      raise UnsupportedException
     end
   end
 end

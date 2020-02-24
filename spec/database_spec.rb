@@ -7,7 +7,7 @@ RSpec.describe Makanai::Database do
   let(:root) { Makanai::Settings.app_root_path }
 
   describe '.initialize' do
-    let(:client) { Makanai::Dbms::Sqlite }
+    let(:client) { :sqlite }
     let(:object) do
       Makanai::Database.new(
         client: client,
@@ -26,10 +26,9 @@ RSpec.describe Makanai::Database do
     end
 
     context 'configured not supported client.' do
-      class NotSupportClient; end
-      let(:client) { NotSupportClient }
+      let(:client) { :not_support }
 
-      it 'default client is Makanai::Dbms::Sqlite.' do
+      it 'raise UnsupportedException.' do
         expect { object }.to raise_error Makanai::Database::UnsupportedException
       end
     end
@@ -38,20 +37,12 @@ RSpec.describe Makanai::Database do
   describe '#execute_sql' do
     before { allow(STDOUT).to receive(:puts) }
 
-    it 'created numbar table.' do
-      client = Class.new do
-        def initialize(path); end
-
-        def execute_sql(sql)
-          sql
-        end
-
-        def self.name
-          Makanai::Dbms::Sqlite.name
-        end
-      end
-      db = Makanai::Database.new(client: client, config: { path: 'path' })
-      expect(db.execute_sql('sql')).to eq 'sql'
+    it 'executable sql.' do
+      db = Makanai::Database.new(
+        client: :sqlite,
+        config: { path: "#{root}/spec/db/makanai.db" }
+      )
+      expect(db.execute_sql('SELECT 1 AS val;')).to eq [{ 'val' => 1 }]
     end
   end
 end

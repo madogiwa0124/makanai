@@ -41,7 +41,7 @@ RSpec.describe Makanai::Model do
 
       def build_db
         Makanai::Database.new(
-          client: Makanai::Dbms::Sqlite,
+          client: :sqlite,
           config: { path: "#{root}/spec/db/makanai.db" }
         )
       end
@@ -241,7 +241,7 @@ RSpec.describe Makanai::Model do
 
       def build_db
         Makanai::Database.new(
-          client: Makanai::Dbms::Postgres,
+          client: :postgres,
           config: {
             host: '0.0.0.0',
             password: nil,
