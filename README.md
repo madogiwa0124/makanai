@@ -100,6 +100,26 @@ Overwrite the `handler` in `rack_app_config` with the created ruby ​​file(ex
 Makanai::Settings.rack_app_config = { handler: :puma, host: '0.0.0.0', port: '8080' }
 ```
 
+### use other dbms
+
+install dbms(ex. postgresql). And add dbms gem (ex. pg) in your Gemfile.
+
+``` ruby
+gem 'pg'
+```
+
+Overwrite the `databse_client` and `databse_config` with the created ruby ​​file(ex. app.rb) and Rakefile.
+
+``` ruby
+Makanai::Settings.databse_client = :postgres
+Makanai::Settings.databse_config = {
+  host: 'localhost',
+  password:'password',
+  dbname: 'makanai',
+  port: 5432
+}
+```
+
 ## routing
 
 ``` ruby
@@ -238,6 +258,22 @@ Resource.find(1).delete
 # Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/Madogiwa0124/makanai. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+## setup develop enviroment
+
+Use docker-compose to build `mysql` and` postgres` containers for development.
+
+``` sh
+$ docker-compose up -d
+Creating makanai_mysql_1    ... done
+Creating makanai_postgres_1 ... done
+
+$ docker-compose ps
+       Name                     Command              State                 Ports
+----------------------------------------------------------------------------------------------
+makanai_mysql_1      docker-entrypoint.sh mysqld     Up      0.0.0.0:3306->3306/tcp, 33060/tcp
+makanai_postgres_1   docker-entrypoint.sh postgres   Up      0.0.0.0:5432->5432/tcp
+```
 
 # License
 
