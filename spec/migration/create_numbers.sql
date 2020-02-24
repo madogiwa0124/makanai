@@ -1,5 +1,5 @@
 create table if not exists numbers (
-  id integer primary key autoincrement,
+  id integer,
   name varchar(30),
-  val int
+  val varchar(100)
 );
