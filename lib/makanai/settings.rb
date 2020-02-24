@@ -26,9 +26,19 @@ module Makanai
     # @databse_client = :postgres
     # @databse_config = {
     #   host: 'localhost',
-    #   password: nil,
+    #   password: 'password',
     #   dbname: 'makanai',
     #   port: 5432
+    # }.freeze
+
+    # NOTE: Use MySQL
+    # @databse_client = :mysql
+    # @databse_config = {
+    #   host: 'localhost',
+    #   username: 'root',
+    #   password: 'password',
+    #   database: 'makanai',
+    #   port: 3306
     # }.freeze
 
     class << self
