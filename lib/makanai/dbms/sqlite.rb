@@ -5,8 +5,8 @@ require 'sqlite3'
 module Makanai
   module Dbms
     class Sqlite
-      def initialize(path)
-        @db = SQLite3::Database.new(path)
+      def initialize(config)
+        @db = SQLite3::Database.new(config[:path])
         db.tap { |db| db.results_as_hash = true }
       end
 

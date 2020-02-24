@@ -7,7 +7,13 @@ RSpec.describe Makanai::Database do
   let(:root) { Makanai::Settings.app_root_path }
 
   describe '.initialize' do
-    let(:object) { Makanai::Database.new(config: { path: "#{root}/spec/db/makanai.db" }) }
+    let(:client) { Makanai::Dbms::Sqlite }
+    let(:object) do
+      Makanai::Database.new(
+        client: client,
+        config: { path: "#{root}/spec/db/makanai.db" }
+      )
+    end
 
     it 'return Makanai::Database Object.' do
       expect(object.class).to eq Makanai::Database
@@ -16,6 +22,15 @@ RSpec.describe Makanai::Database do
     context 'client is not cofigured.' do
       it 'default client is Makanai::Dbms::Sqlite.' do
         expect(object.client.class).to eq Makanai::Dbms::Sqlite
+      end
+    end
+
+    context 'configured not supported client.' do
+      class NotSupportClient; end
+      let(:client) { NotSupportClient }
+
+      it 'default client is Makanai::Dbms::Sqlite.' do
+        expect { object }.to raise_error Makanai::Database::UnsupportedException
       end
     end
   end

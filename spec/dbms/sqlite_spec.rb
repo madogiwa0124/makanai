@@ -7,7 +7,8 @@ RSpec.describe Makanai::Dbms::Sqlite do
   let(:root) { Makanai::Settings.app_root_path }
 
   describe '.initialize' do
-    let(:object) { Makanai::Dbms::Sqlite.new("#{root}/spec/db/makanai.db") }
+    let(:config) { { path: "#{root}/spec/db/makanai.db" } }
+    let(:object) { Makanai::Dbms::Sqlite.new(config) }
 
     it 'return Makanai::Dbms::Sqlite Object.' do
       expect(object.class).to eq Makanai::Dbms::Sqlite
@@ -23,22 +24,22 @@ RSpec.describe Makanai::Dbms::Sqlite do
   end
 
   describe '#execute_sql' do
-    let(:db_path) { "#{root}/spec/db/makanai.db" }
+    let(:config) { { path: "#{root}/spec/db/makanai.db" } }
     let(:create_table_sql) { File.read("#{root}/spec/migration/create_numbers.sql") }
     let(:drop_table_sql) { File.read("#{root}/spec/migration/drop_numbers.sql") }
     let(:show_tables_sql) { "select name from sqlite_master where type='table';" }
 
     def create_and_drop_numbers(&block)
-      Makanai::Dbms::Sqlite.new(db_path).execute_sql(create_table_sql)
+      Makanai::Dbms::Sqlite.new(config).execute_sql(create_table_sql)
       result = block.call
-      Makanai::Dbms::Sqlite.new(db_path).execute_sql(drop_table_sql)
+      Makanai::Dbms::Sqlite.new(config).execute_sql(drop_table_sql)
       result
     end
 
     before { allow(STDOUT).to receive(:puts) }
 
     it 'created numbar table.' do
-      db = Makanai::Dbms::Sqlite.new(db_path)
+      db = Makanai::Dbms::Sqlite.new(config)
       result = create_and_drop_numbers { db.execute_sql(show_tables_sql) }
       expect(result.map { |table| table['name'] }).to include 'numbers'
     end

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require 'rack'
+require_relative './dbms/sqlite.rb'
+require_relative './dbms/postgres.rb'
 
 module Makanai
   class Settings
@@ -16,12 +18,27 @@ module Makanai
     @migration_root_path = DEFAULT_MIGRATION_ROOT_PATH
     @rack_app_config = DEFAULT_RACK_APP_CONFIG
 
+    # NOTE: Use Sqlite3
+    @databse_client = Dbms::Sqlite
+    @databse_config = { path: File.join(@app_root_path, @database_path) }
+
+    # NOTE: Use Postgresql
+    # @databse_client = Dbms::Postgres
+    # @databse_config = {
+    #   host: 'localhost',
+    #   password: nil,
+    #   dbname: 'makanai',
+    #   port: 5432
+    # }.freeze
+
     class << self
       attr_accessor :app_root_path,
                     :database_path,
                     :template_root_path,
                     :migration_root_path,
-                    :rack_app_config
+                    :rack_app_config,
+                    :databse_client,
+                    :databse_config
 
       def database_full_path
         File.join(app_root_path, database_path)

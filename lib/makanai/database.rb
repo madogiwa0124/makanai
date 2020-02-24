@@ -7,10 +7,10 @@ module Makanai
   class Database
     class UnsupportedException < StandardError; end
 
-    def initialize(client: Dbms::Sqlite, config: { path: Settings.database_full_path })
+    def initialize(client: Settings.databse_client, config: Settings.databse_config)
       case client.name
-      when Makanai::Dbms::Sqlite.name
-        @client = client.new(config[:path])
+      when Makanai::Dbms::Sqlite.name, Makanai::Dbms::Postgres.name
+        @client = client.new(config)
       else
         raise UnsupportedException
       end
