@@ -102,7 +102,7 @@ Makanai::Settings.rack_app_config = { handler: :puma, host: '0.0.0.0', port: '80
 
 ### use other dbms
 
-install dbms(ex. postgresql). And add dbms gem (ex. pg) in your Gemfile.
+install dbms(postgresql, mysql, sqlite). And add dbms gem (ex. pg) in your Gemfile.
 
 ``` ruby
 gem 'pg'
@@ -192,7 +192,7 @@ Create an erb file in `src/views` with the name specified in render.
 
 ## migration
 
-makanai uses `sqlite3` as db. create db and migrate schema when executed `rake makanai:db:migration`.
+migrate schema when executed `rake makanai:db:migration`.
 
 ```
 # execute all migraiton sql
