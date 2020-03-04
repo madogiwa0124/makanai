@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 require 'pg'
-
+require_relative './base.rb'
 module Makanai
   module Dbms
-    class Postgres
+    class Postgres < Base
       def initialize(config)
         @db = PG.connect(config || default_config)
         db.type_map_for_results = PG::BasicTypeMapForResults.new(db)

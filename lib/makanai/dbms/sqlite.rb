@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 require 'sqlite3'
-
+require_relative './base.rb'
 module Makanai
   module Dbms
-    class Sqlite
+    class Sqlite < Base
       def initialize(config)
         @db = SQLite3::Database.new(config[:path])
         db.tap { |db| db.results_as_hash = true }
