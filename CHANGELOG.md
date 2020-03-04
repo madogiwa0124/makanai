@@ -19,3 +19,8 @@
   Changed the setting so that it is retained by the Class variable, and made it configurable.
   The big advantage is that you can use any web server(ex. puma) except WEBrick.  
   https://github.com/Madogiwa0124/makanai/pull/18/commits/e6ea10e596c685ef77c042fa1e8f0294c85166f2
+
+## :gift: 2020/03/04 `v0.1.3` released.
+* :sparkles: Multiple DBMS available.  
+  you can use dbms(MySQL :dolphin:, PostgreSQL :elephant:) other then SQLite.  
+  https://github.com/Madogiwa0124/makanai/pull/19
