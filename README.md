@@ -136,8 +136,8 @@ router.get '/hoge' do
   'Hello Hoge!'
 end
 
-# enable access to /params with get parameter
-router.get '/check' do |request|
+# enable access to /hoge with get parameter(?hoge=fuga)
+router.get '/hoge' do |request|
   request.params['hoge']
 end
 
