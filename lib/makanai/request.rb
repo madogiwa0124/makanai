@@ -6,7 +6,8 @@ require 'uri'
 
 module Makanai
   class Request < Rack::Request
-    attr_reader :env, :url, :query, :origin_body, :method, :params
+    attr_reader :env, :url, :query, :origin_body, :method
+    attr_accessor :params
 
     def initialize(env)
       super

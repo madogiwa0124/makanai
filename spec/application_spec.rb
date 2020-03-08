@@ -18,6 +18,19 @@ RSpec.describe Makanai::Application do
       expect(response.body).to eq 'Hello World!'
     end
 
+    context 'binded dinamics url route' do
+      let(:response) { Rack::MockRequest.new(app).get('/foo/1') }
+      before { router.get('/foo/:id') { |req| "Hello Foo id:#{req.params['id']}!" } }
+
+      it 'Response Successed' do
+        expect(response.status).to eq 200
+      end
+
+      it 'return message with dinamics url parameter' do
+        expect(response.body).to eq 'Hello Foo id:1!'
+      end
+    end
+
     context 'has query parameter' do
       let(:response) { Rack::MockRequest.new(app).get('/hello?message=Makanai') }
       before { router.get('/hello') { |req| "Hello #{req.params['message']}!" } }

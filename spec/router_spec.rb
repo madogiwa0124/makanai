@@ -49,11 +49,35 @@ RSpec.describe Makanai::Router do
     let(:router) { Makanai::Router.new }
 
     context 'found route' do
-      before { router.get('/') { 'Hello World' } }
+      context 'root path' do
+        before { router.get('/') { 'Hello World' } }
 
-      it 'return found route object' do
-        route = router.bind!(url: '/', method: 'GET')
-        expect(route.process.call).to eq 'Hello World'
+        it 'return found route object' do
+          route = router.bind!(url: '/', method: 'GET')
+          expect(route.process.call).to eq 'Hello World'
+        end
+      end
+
+      context 'with dinamic path' do
+        context 'with :id' do
+          before { router.get('/resouces/:id') { 'Hello World' } }
+
+          it 'return found route object' do
+            route = router.bind!(url: '/resouces/1', method: 'GET')
+            expect(route.url_args).to eq({ 'id' => '1' })
+            expect(route.process.call).to eq 'Hello World'
+          end
+        end
+
+        context 'with :parent_id, :id' do
+          before { router.get('/parents/:parent_id/children/:id') { 'Hello World' } }
+
+          it 'return found route object' do
+            route = router.bind!(url: '/parents/1/children/2', method: 'GET')
+            expect(route.url_args).to eq({ 'parent_id' => '1', 'id' => '2' })
+            expect(route.process.call).to eq 'Hello World'
+          end
+        end
       end
     end
 

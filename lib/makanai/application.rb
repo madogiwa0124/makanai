@@ -38,7 +38,10 @@ module Makanai
     private
 
     def execute_route
-      router.bind!(url: request.url, method: request.method).process.call(request)
+      route = router.bind!(url: request.url, method: request.method)
+      # NOTE: merge dynamic url params (ex. /resources/1 -> { 'id' => '1' })
+      @request.params.merge!(route.url_args)
+      route.process.call(request)
     rescue Makanai::Router::NotFound
       @response.status = 404
       nil

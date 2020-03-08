@@ -121,6 +121,7 @@ Makanai::Settings.databse_config = {
 ```
 
 ## routing
+Routing is searched in the order defined and call block args.
 
 ``` ruby
 require 'makanai/main'
@@ -138,6 +139,12 @@ end
 # enable access to /params with get parameter
 router.get '/check' do |request|
   request.params['hoge']
+end
+
+# enable access to /hoge/:id with dinamic url args({ 'id' => '1'})
+# NOTE: dinamics prefix is `:`.
+router.get '/hoge/:id' do
+  request.params['id']
 end
 
 # enable access to /resources with method post and redirect other url.
