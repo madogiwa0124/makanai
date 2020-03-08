@@ -2,6 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/makanai.svg)](https://badge.fury.io/rb/makanai)
 [![Build Status](https://travis-ci.com/Madogiwa0124/makanai.svg?branch=master)](https://travis-ci.com/Madogiwa0124/makanai)
+[![codecov](https://codecov.io/gh/Madogiwa0124/makanai/branch/master/graph/badge.svg)](https://codecov.io/gh/Madogiwa0124/makanai)
 
 simple web application framework for learning.
 

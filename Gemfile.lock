@@ -10,8 +10,14 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.0)
+    codecov (0.1.16)
+      json
+      simplecov
+      url
     diff-lcs (1.3)
+    docile (1.3.2)
     jaro_winkler (1.5.4)
+    json (2.3.0)
     mysql2 (0.5.3)
     parallel (1.19.1)
     parser (2.7.0.4)
@@ -43,14 +49,20 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.7)
     ruby-progressbar (1.10.1)
+    simplecov (0.18.5)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+    simplecov-html (0.12.2)
     sqlite3 (1.4.2)
     unicode-display_width (1.6.1)
+    url (0.3.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   bundler (~> 2.0)
+  codecov
   makanai!
   mysql2 (~> 0.5)
   pg (~> 1.2)

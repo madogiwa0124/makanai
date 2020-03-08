@@ -1,4 +1,6 @@
 ---
+env:
+  - CODECOV_TOKEN="3fec95fd-8b9d-43fa-ad3c-d792445d5a3a"
 language: ruby
 cache: bundler
 services:
