@@ -22,7 +22,7 @@ GEM
     parallel (1.19.1)
     parser (2.7.0.4)
       ast (~> 2.4.0)
-    pg (1.2.2)
+    pg (1.2.3)
     rack (2.2.2)
     rainbow (3.0.0)
     rake (13.0.1)
