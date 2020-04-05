@@ -10,6 +10,7 @@ module Makanai
     DIRECTORY_NAMES = YAML.load_file("#{ROOT_PATH}/application/directories.yaml")
     APP_TEMPLATE = File.read("#{ROOT_PATH}/application/templates/app.erb")
     RAKEFILE_TEMPLATE = File.read("#{ROOT_PATH}/application/templates/rakefile.erb")
+    CONFIG_RU_TEMPLATE = File.read("#{ROOT_PATH}/application/templates/config.ru.erb")
 
     def initialize(path = Dir.pwd)
       @path = path
@@ -35,6 +36,12 @@ module Makanai
 
     def create_rakefile(template = RAKEFILE_TEMPLATE)
       File.join(path, 'Rakefile').tap do |file_path|
+        create_file(file_path, ERB.new(template).result)
+      end
+    end
+
+    def create_config_ru(template = CONFIG_RU_TEMPLATE)
+      File.join(path, 'config.ru').tap do |file_path|
         create_file(file_path, ERB.new(template).result)
       end
     end

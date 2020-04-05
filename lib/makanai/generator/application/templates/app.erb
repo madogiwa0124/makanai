@@ -2,6 +2,12 @@
 
 require 'makanai/main'
 
-router.get '/' do
-  'Hello Makanai!'
+module Application
+  def prepare
+    router.get '/' do
+      'Hello Makanai!'
+    end
+  end
 end
+
+
