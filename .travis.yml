@@ -5,13 +5,13 @@ services:
   - postgresql
   - mysql
 rvm:
-  - 2.6.5
-  - 2.7.0
+  - 2.6.6
+  - 2.7.1
   - ruby-head
 os:
   - linux
 before_install:
-  - gem install bundler -v 2.1.2
+  - gem install bundler -v 2.1.4
   - mysql -e 'CREATE DATABASE IF NOT EXISTS makanai;'
 before_script:
   - psql -c 'create database makanai;' -U postgres
