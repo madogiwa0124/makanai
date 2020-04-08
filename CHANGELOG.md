@@ -24,3 +24,15 @@
 * :sparkles: Multiple DBMS available.  
   you can use dbms(MySQL :dolphin:, PostgreSQL :elephant:) other then SQLite.  
   https://github.com/Madogiwa0124/makanai/pull/19
+
+## :gift: 2020/04/08 `v0.1.4` released.
+* :sparkles: support lastest ruby versions(2.6.6, 2.7.1)
+* :sparkles: support for dynamic URL routing.
+
+  ``` ruby
+  router.get '/hoge/:id' do
+    request.params['id']
+  end
+  ```
+
+  https://github.com/Madogiwa0124/makanai/commit/e256368fd0a13f1d0d2d6c6af17caef7760e64f0
