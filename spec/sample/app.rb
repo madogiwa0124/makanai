@@ -21,6 +21,12 @@ router.get '/index' do
   render :index
 end
 
+router.get '/index/haml' do
+  @title = 'Makanai title'
+  @body = 'Makanai body'
+  render :index, :haml
+end
+
 router.get '/numbers' do
   @title = 'numbers'
   @numbers = Number.all

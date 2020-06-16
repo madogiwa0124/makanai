@@ -169,21 +169,32 @@ router.delete '/resources' do |request|
 end
 ```
 
-## erb render
+## rendering
 
-Define instance variables used in the routing view.
+Define instance variables used in the routing view. And specify template engine(`ERB` or `Haml`).
 
 ``` ruby
 require 'makanai/main'
 
+# setting template engine(default: :erb).
+Makanai::Settings.template_engine = :haml
+
 router.get '/index' do
   @title = 'Makanai title'
   @body = 'Makanai body'
-  render :index
+  render :index # render default template engine.
+end
+
+router.get '/index' do
+  @title = 'Makanai title'
+  @body = 'Makanai body'
+  render :index, :haml # render specified template engine.
 end
 ```
 
 Create an erb file in `src/views` with the name specified in render.
+
+erb
 
 ``` html
 <!-- src/views/index.erb -->
@@ -196,6 +207,19 @@ Create an erb file in `src/views` with the name specified in render.
   <%= @body %>
 </body>
 </html>
+```
+
+haml
+
+``` haml
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "UTF-8"}/
+    %title= @title
+  %body
+    = @body
 ```
 
 ## migration
