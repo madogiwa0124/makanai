@@ -36,3 +36,6 @@
   ```
 
   https://github.com/Madogiwa0124/makanai/commit/e256368fd0a13f1d0d2d6c6af17caef7760e64f0
+
+## :gift: 2020/06/16 `v0.1.5` released.
+* :package: dependency update.
