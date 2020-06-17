@@ -244,7 +244,8 @@ RSpec.describe Makanai::Model do
           client: :postgres,
           config: {
             host: '0.0.0.0',
-            password: nil,
+            user: 'makanai',
+            password: 'password',
             dbname: 'makanai',
             port: 5432
           }

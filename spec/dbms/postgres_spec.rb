@@ -6,7 +6,8 @@ require 'makanai/settings'
 RSpec.describe Makanai::Dbms::Postgres do
   let(:config) do
     { host: '0.0.0.0',
-      password: nil,
+      user: 'makanai',
+      password: 'password',
       dbname: 'makanai',
       port: 5432 }
   end
