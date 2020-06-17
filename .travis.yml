@@ -14,7 +14,7 @@ before_install:
   - gem install bundler -v 2.1.4
   - mysql -e 'CREATE DATABASE IF NOT EXISTS makanai;'
 before_script:
-  - psql -c 'create user makanai WITH PASSWORD "password";' -U postgres
+  - psql -c "create user makanai WITH PASSWORD 'password';" -U postgres
   - psql -c 'create database makanai;' -U postgres
 script:
   - bundle exec rubocop --parallel
