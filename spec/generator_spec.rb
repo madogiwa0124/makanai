@@ -39,4 +39,13 @@ RSpec.describe Makanai::Generator do
       expect(result).to eq File.join('/', 'Rakefile')
     end
   end
+
+  describe '#create_config_ru' do
+    let(:generator) { Makanai::Generator.new('/') }
+
+    it 'return created config.ru path.' do
+      result = generator.create_config_ru
+      expect(result).to eq File.join('/', 'config.ru')
+    end
+  end
 end

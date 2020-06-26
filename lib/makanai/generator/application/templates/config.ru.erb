@@ -1,0 +1,17 @@
+require_relative 'app.rb'
+self.singleton_class.class_eval { include Application }
+self.prepare
+
+class Rack::Server
+  alias_method :original_options, :options
+
+  def options
+    original_options.merge({
+      server: Makanai::Settings.rack_app_config[:handler],
+      Host:   Makanai::Settings.rack_app_config[:host],
+      Port:   Makanai::Settings.rack_app_config[:port]
+    })
+  end
+end
+
+run Makanai::Application.new(router: router)

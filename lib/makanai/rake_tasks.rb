@@ -14,6 +14,7 @@ namespace :makanai do
       puts generator.create_app_directories
       puts generator.create_app_rb
       puts generator.create_rakefile
+      puts generator.create_cofig_ru
       puts 'INFO: finished ganerate app'
     end
   end
