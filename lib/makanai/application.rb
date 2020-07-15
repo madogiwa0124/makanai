@@ -3,10 +3,10 @@
 require 'json'
 require 'uri'
 require 'rack'
-require_relative './settings.rb'
-require_relative './request.rb'
-require_relative './response.rb'
-require_relative './router.rb'
+require_relative './settings'
+require_relative './request'
+require_relative './response'
+require_relative './router'
 
 module Makanai
   class Application

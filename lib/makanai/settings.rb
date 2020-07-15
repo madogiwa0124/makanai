@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'rack'
-require_relative './dbms/sqlite.rb'
-require_relative './dbms/postgres.rb'
+require_relative './dbms/sqlite'
+require_relative './dbms/postgres'
 
 module Makanai
   class Settings

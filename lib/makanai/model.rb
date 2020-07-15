@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './database.rb'
+require_relative './database'
 
 module Makanai
   class Model

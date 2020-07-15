@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'pg'
-require_relative './base.rb'
+require_relative './base'
 module Makanai
   module Dbms
     class Postgres < Base

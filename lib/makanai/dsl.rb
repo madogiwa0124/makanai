@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative './template.rb'
-require_relative './response.rb'
-require_relative './settings.rb'
+require_relative './template'
+require_relative './response'
+require_relative './settings'
 
 def render(path, engine = Makanai::Settings.template_engine)
   template_root_path = Makanai::Settings.template_full_path

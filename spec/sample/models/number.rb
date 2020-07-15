@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'makanai/model.rb'
+require 'makanai/model'
 
 class Number < Makanai::Model
   TABLE_NAME = 'numbers'
