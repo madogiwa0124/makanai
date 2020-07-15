@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'mysql2'
-require_relative './base.rb'
+require_relative './base'
 module Makanai
   module Dbms
     class Mysql < Base

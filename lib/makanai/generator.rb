@@ -2,7 +2,7 @@
 
 require 'erb'
 require 'yaml'
-require_relative '../makanai.rb'
+require_relative '../makanai'
 
 module Makanai
   class Generator

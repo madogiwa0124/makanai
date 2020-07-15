@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative './settings.rb'
-require_relative './database.rb'
+require_relative './settings'
+require_relative './database'
 
 module Makanai
   module Migration

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative './dbms/sqlite.rb'
-require_relative './settings.rb'
+require_relative './dbms/sqlite'
+require_relative './settings'
 
 module Makanai
   class Database

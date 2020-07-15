@@ -2,8 +2,8 @@
 
 require 'rake'
 require 'sqlite3'
-require_relative './migration.rb'
-require_relative './generator.rb'
+require_relative './migration'
+require_relative './generator'
 
 namespace :makanai do
   namespace :initialize do
