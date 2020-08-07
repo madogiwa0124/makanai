@@ -39,3 +39,10 @@
 
 ## :gift: 2020/06/16 `v0.1.5` released.
 * :package: dependency update.
+
+## :gift: 2020/08/07 `v0.1.6` released.
+* :sparkles: enabled to switch template engine Haml and ERB.  
+  https://github.com/Madogiwa0124/makanai/commit/b9f977fe9e974aa1abbf2764a2fdad989e2767ec
+
+* :zap: remove sqlite3 from runtime_dependency.  
+  https://github.com/Madogiwa0124/makanai/commit/d63c3b12cf6fc412a8d88806dca9710e210e5fe0
