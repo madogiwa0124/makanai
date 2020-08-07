@@ -41,7 +41,7 @@ RSpec.describe Makanai::Dbms::Mysql do
       result
     end
 
-    before { allow(STDOUT).to receive(:puts) }
+    before { allow($stdout).to receive(:puts) }
 
     it 'created numbar table.' do
       db = Makanai::Dbms::Mysql.new(config)

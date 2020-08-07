@@ -7,6 +7,7 @@ module Makanai
   module TemplateEngine
     class Haml < Base
       def initialize(text:, locals: {})
+        super()
         @text = text
         @locals = locals
       end
