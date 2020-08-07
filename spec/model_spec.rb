@@ -51,7 +51,7 @@ RSpec.describe Makanai::Model do
       end
 
       before do
-        allow(STDOUT).to receive(:puts)
+        allow($stdout).to receive(:puts)
         build_db.execute_sql create_table_sql
         build_db.execute_sql create_number_sql(1, 'name_1', 'val_1')
         build_db.execute_sql create_number_sql(2, 'name_2', 'val_2')
@@ -257,7 +257,7 @@ RSpec.describe Makanai::Model do
       end
 
       before do
-        allow(STDOUT).to receive(:puts)
+        allow($stdout).to receive(:puts)
         build_db.execute_sql create_table_sql
         build_db.execute_sql create_number_sql(1, 'name_1', 'val_1')
         build_db.execute_sql create_number_sql(2, 'name_2', 'val_2')

@@ -35,7 +35,7 @@ RSpec.describe Makanai::Database do
   end
 
   describe '#execute_sql' do
-    before { allow(STDOUT).to receive(:puts) }
+    before { allow($stdout).to receive(:puts) }
 
     it 'executable sql.' do
       db = Makanai::Database.new(

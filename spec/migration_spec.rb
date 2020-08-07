@@ -20,7 +20,7 @@ RSpec.describe Makanai::Migration do
     let(:show_tables_sql) { "select name from sqlite_master where type='table';" }
 
     before do
-      allow(STDOUT).to receive(:puts)
+      allow($stdout).to receive(:puts)
       db = Makanai::Database.new(config: { path: path })
       migratable_object.execute_sql(sql_path: create_table_sql_path, db: db)
     end

@@ -6,6 +6,7 @@ module Makanai
   module Dbms
     class Mysql < Base
       def initialize(config)
+        super()
         @db = Mysql2::Client.new(config || default_config)
       end
 

@@ -8,6 +8,7 @@ module Makanai
   module TemplateEngine
     class Erb < Base
       def initialize(text:, locals: {})
+        super()
         @text = text
         @locals = locals
       end

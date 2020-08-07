@@ -6,6 +6,7 @@ module Makanai
   module Dbms
     class Postgres < Base
       def initialize(config)
+        super()
         @db = PG.connect(config || default_config)
         db.type_map_for_results = PG::BasicTypeMapForResults.new(db)
       end
