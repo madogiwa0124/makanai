@@ -4,7 +4,6 @@ PATH
     makanai (0.1.5)
       rack (>= 2.0.7, < 2.3.0)
       rake (>= 10, < 14)
-      sqlite3 (~> 1.4.1)
 
 GEM
   remote: https://rubygems.org/
@@ -77,6 +76,7 @@ DEPENDENCIES
   pg (~> 1.2)
   rspec (~> 3.0)
   rubocop (~> 0.74)
+  sqlite3 (~> 1.4.1)
 
 BUNDLED WITH
    2.1.4

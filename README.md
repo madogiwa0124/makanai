@@ -24,12 +24,6 @@ Or install it yourself as:
 
     $ gem install makanai
 
-## Dependencies
-
-Makanai depends on the following, so please install it in advance.
-
-* [SQLite3](https://www.sqlite.org/index.html)
-
 ## Start sample project
 Getting started with Makanai is easy.
 
@@ -101,9 +95,11 @@ Overwrite the `handler` in `rack_app_config` with the created ruby ​​file(ex
 Makanai::Settings.rack_app_config = { handler: :puma, host: '0.0.0.0', port: '8080' }
 ```
 
-### use other dbms
+### use dbms
 
-install dbms(postgresql, mysql, sqlite). And add dbms gem (ex. pg) in your Gemfile.
+Makanai use `sqlite` by default, and make `db/makanai.db`.
+
+If you use another dbms, install dbms(PostgreSQL or MySQL). And add dbms gem (`pg` or `mysql2`) in your Gemfile.
 
 ``` ruby
 gem 'pg'

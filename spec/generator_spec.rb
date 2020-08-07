@@ -39,4 +39,13 @@ RSpec.describe Makanai::Generator do
       expect(result).to eq File.join('/', 'Rakefile')
     end
   end
+
+  describe '#create_gemfile' do
+    let(:generator) { Makanai::Generator.new('/') }
+
+    it 'return created Rakefile path.' do
+      result = generator.create_gemfile
+      expect(result).to eq File.join('/', 'Gemfile')
+    end
+  end
 end
