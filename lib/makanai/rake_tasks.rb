@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'rake'
-require 'sqlite3'
 require_relative './migration'
 require_relative './generator'
 
@@ -14,6 +13,7 @@ namespace :makanai do
       puts generator.create_app_directories
       puts generator.create_app_rb
       puts generator.create_rakefile
+      puts generator.create_gemfile
       puts 'INFO: finished ganerate app'
     end
   end
@@ -25,6 +25,7 @@ namespace :makanai do
 
       puts "INFO: start migration #{ENV['target']}"
       target = ENV['target']
+      pp migration_root_path
       if target == 'all'
         sql_paths = Dir.glob("#{migration_root_path}*")
         sql_paths.each { |sql_path| execute_sql(sql_path: sql_path) }
