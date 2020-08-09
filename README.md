@@ -68,6 +68,8 @@ root ┬ app.rb    # main application file
      ├ views     # views files(ex. index.erb)
      ├ models    # models files(ex. post.rb)
      ├ migration # migration files(ex. 00_create_resources.sql)
+     ├ Rakefile  # rake tasks
+     ├ Gemfile   # dependencies
      └ db        # use Sqlite3 dabase file
 ```
 
