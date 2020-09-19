@@ -2,16 +2,15 @@
 
 require 'makanai/database'
 require 'makanai/model'
-require 'makanai/database'
 require 'makanai/settings'
+
+class SampleModel < Makanai::Model
+  TABLE_NAME = 'numbers'
+  PRYMARY_KEY = 'id'
+end
 
 RSpec.describe Makanai::Model do
   let(:root) { Makanai::Settings.app_root_path }
-
-  class SampleModel < Makanai::Model
-    TABLE_NAME = 'numbers'
-    PRYMARY_KEY = 'id'
-  end
 
   context 'sqlite' do
     describe '.initialize' do
