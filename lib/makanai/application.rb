@@ -30,7 +30,7 @@ module Makanai
       @request = Makanai::Request.new(env)
       @response = Makanai::Response.new
       route_result = execute_route
-      return route_result.result if route_result.class == Response
+      return route_result.result if route_result.instance_of?(Response)
       @response.body << execute_route
       @response.result
     end
