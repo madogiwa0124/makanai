@@ -55,11 +55,13 @@ module Makanai
     end
 
     def self.buid_sql_text(value)
+      # rubocop:disable Lint/DuplicateBranch
       case value
       when String then "'#{value.gsub(/'/, "''")}'"
       when Numeric, Integer then value
       else value
       end
+      # rubocop:enable Lint/DuplicateBranch
     end
 
     def assign_attributes(attributes)
