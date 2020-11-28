@@ -21,6 +21,7 @@ module Makanai
         # ref: https://docs.ruby-lang.org/en/2.7.0/ERB.html#method-i-result
         ERB.new(text).result(Locals.new(locals).self_binding)
       end
+
       class Locals
         def initialize(locals)
           locals.each { |key, val| instance_variable_set(key, val) }
