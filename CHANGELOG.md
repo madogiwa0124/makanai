@@ -46,3 +46,8 @@
 
 * :zap: remove sqlite3 from runtime_dependency.  
   https://github.com/Madogiwa0124/makanai/commit/d63c3b12cf6fc412a8d88806dca9710e210e5fe0
+
+## :gift: 2021/01/05 `v.1.7` released.
+* :package: dependency update.
+* :gem: supported ruby `3.0.0`.
+  https://github.com/Madogiwa0124/makanai/pull/82
