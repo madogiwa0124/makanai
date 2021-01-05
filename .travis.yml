@@ -6,12 +6,13 @@ services:
   - mysql
 rvm:
   - 2.6.6
-  - 2.7.1
+  - 2.7.2
+  - 3.0.0
   - ruby-head
 os:
   - linux
 before_install:
-  - gem install bundler -v 2.1.4
+  - gem install bundler -v 2.2.3
   - mysql -e 'CREATE DATABASE IF NOT EXISTS makanai;'
 before_script:
   - psql -c "create user makanai WITH PASSWORD 'password';" -U postgres
