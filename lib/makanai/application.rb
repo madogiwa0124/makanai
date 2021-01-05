@@ -20,7 +20,7 @@ module Makanai
     def run!
       app_config = config.rack_app_config
       handler = Rack::Handler.get(app_config[:handler])
-      handler.run(self, { Host: app_config[:host], Port: app_config[:port] })
+      handler.run(self, **{ Host: app_config[:host], Port: app_config[:port] })
     rescue Interrupt
       handler.shutdown
       puts '==== Goodbye! :) ===='

@@ -32,9 +32,9 @@ $ mkdir sample
 $ cd sample
 $ makanai init
 $ ruby app.rb
-[2019-12-28 12:27:13] INFO  WEBrick 1.6.0
-[2019-12-28 12:27:13] INFO  ruby 2.7.0 (2019-12-25) [x86_64-darwin18]
-[2019-12-28 12:27:13] INFO  WEBrick::HTTPServer#start: pid=22676 port=8080
+[2021-01-05 09:37:09] INFO  WEBrick 1.7.0
+[2021-01-05 09:37:09] INFO  ruby 3.0.0 (2020-12-25) [x86_64-darwin18]
+[2021-01-05 09:37:09] INFO  WEBrick::HTTPServer#start: pid=10675 port=8080
 ```
 
 # Usage
