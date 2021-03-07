@@ -49,7 +49,7 @@ module Makanai
     def build_params
       case env['REQUEST_METHOD']
       when 'GET'
-        return Hash[URI.decode_www_form(query)] if query
+        return URI.decode_www_form(query).to_h if query
       when 'POST'
         return parsed_body if origin_body
       end
