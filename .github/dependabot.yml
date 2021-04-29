@@ -1,0 +1,21 @@
+version: 2
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "20:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: rexml
+    versions:
+    - 3.2.5
+  - dependency-name: rubocop
+    versions:
+    - 1.10.0
+    - 1.12.0
+    - 1.12.1
+    - 1.9.0
+  - dependency-name: codecov
+    versions:
+    - 0.4.2
