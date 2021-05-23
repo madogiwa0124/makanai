@@ -1,8 +1,8 @@
 # Makanai
 
 [![Gem Version](https://badge.fury.io/rb/makanai.svg)](https://badge.fury.io/rb/makanai)
-[![Build Status](https://travis-ci.com/Madogiwa0124/makanai.svg?branch=master)](https://travis-ci.com/Madogiwa0124/makanai)
-[![codecov](https://codecov.io/gh/Madogiwa0124/makanai/branch/master/graph/badge.svg)](https://codecov.io/gh/Madogiwa0124/makanai)
+[![Build Status](https://travis-ci.com/Madogiwa0124/makanai.svg?branch=main)](https://travis-ci.com/Madogiwa0124/makanai)
+[![codecov](https://codecov.io/gh/Madogiwa0124/makanai/branch/main/graph/badge.svg)](https://codecov.io/gh/Madogiwa0124/makanai)
 
 simple web application framework for learning.
 
@@ -311,4 +311,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 # Code of Conduct
 
-Everyone interacting in the makanai project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/Madogiwa0124/makanai/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the makanai project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/Madogiwa0124/makanai/blob/main/CODE_OF_CONDUCT.md).
