@@ -1,0 +1,46 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby: [ '2.6', '2.7', '3.0' ]
+    services:
+      postgres:
+        image: postgres
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: makanai
+          POSTGRES_PASSWORD: password
+      mysql:
+        image: mysql
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_DATABASE: makanai
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+    - name: cache ruby deps
+      uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gem-
+    - name: install bundler
+      run: gem install bundler -v 2.2.15
+    - name: install ruby deps
+      run: bundle install --jobs 4 --retry 3 --path vendor/bundle
+    - name: lint
+      run: bundle exec rubocop --parallel
+    - name: test
+      run: bundle exec rspec
