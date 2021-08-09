@@ -31,6 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rubocop", "~> 1.0"
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "rspec-retry", "~> 0.6"
   spec.add_development_dependency "pg", "~> 1.2"
   spec.add_development_dependency "mysql2", "~> 0.5"
   spec.add_development_dependency "webrick", "~> 1.7.0"
