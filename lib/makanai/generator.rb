@@ -6,7 +6,7 @@ require_relative '../makanai'
 
 module Makanai
   class Generator
-    ROOT_PATH = "#{Makanai.root}/lib/makanai/generator"
+    ROOT_PATH = "#{Makanai.root}/lib/makanai/generator".freeze
     DIRECTORY_NAMES = YAML.load_file("#{ROOT_PATH}/application/directories.yaml")
     APP_TEMPLATE = File.read("#{ROOT_PATH}/application/templates/app.erb")
     RAKEFILE_TEMPLATE = File.read("#{ROOT_PATH}/application/templates/rakefile.erb")
