@@ -1,16 +1,16 @@
 AllCops:
   NewCops: enable
   Exclude:
-    - './makanai.gemspec'
-    - 'vendor/**/*'
+    - "./makanai.gemspec"
+    - "vendor/**/*"
 
 Metrics/ClassLength:
   Max: 120
 
 Metrics/BlockLength:
   Exclude:
-    - 'spec/**/*'
-    - 'lib/makanai/rake_tasks.rb'
+    - "spec/**/*"
+    - "lib/makanai/rake_tasks.rb"
 
 Style/Documentation:
   Enabled: false
@@ -32,3 +32,10 @@ Layout/LineLength:
 
 Layout/EmptyLineAfterGuardClause:
   Enabled: false
+
+Style/HashSyntax:
+  Enabled: false
+
+Style/OpenStructUse:
+  Exclude:
+    - "spec/**/*"

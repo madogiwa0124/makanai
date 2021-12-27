@@ -8,7 +8,7 @@ def render(path, engine = Makanai::Settings.template_engine)
   template_root_path = Makanai::Settings.template_full_path
   full_path = File.join(template_root_path, path.to_s)
   # NOTE: Get all instance variables in main by Hash
-  locals = instance_variables.map { |name| [name, instance_variable_get(name)] }.to_h
+  locals = instance_variables.to_h { |name| [name, instance_variable_get(name)] }
   Makanai::Template.new(path: full_path, engine: engine, locals: locals).render
 end
 

@@ -34,7 +34,7 @@ module Makanai
     def parsed_body
       @parsed_body ||= JSON.parse(origin_body)
     rescue JSON::ParserError
-      @parsed_body ||= origin_body.split('&').map { |param| param.split('=') }.to_h
+      @parsed_body ||= origin_body.split('&').to_h { |param| param.split('=') }
     end
 
     def parsed_url
