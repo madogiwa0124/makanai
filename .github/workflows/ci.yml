@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby: [ '2.6', '2.7', '3.0' ]
+        ruby: ["2.7", "3.0", "3.1"]
     services:
       postgres:
         image: postgres
@@ -24,23 +24,23 @@ jobs:
           MYSQL_DATABASE: makanai
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
-    - name: cache ruby deps
-      uses: actions/cache@v1
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-gem-
-    - name: install bundler
-      run: gem install bundler -v 2.2.15
-    - name: install ruby deps
-      run: bundle install --jobs 4 --retry 3 --path vendor/bundle
-    - name: lint
-      run: bundle exec rubocop --parallel
-    - name: test
-      run: bundle exec rspec
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - name: cache ruby deps
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gem-
+      - name: install bundler
+        run: gem install bundler -v 2.3.3
+      - name: install ruby deps
+        run: bundle install --jobs 4 --retry 3 --path vendor/bundle
+      - name: lint
+        run: bundle exec rubocop --parallel
+      - name: test
+        run: bundle exec rspec
