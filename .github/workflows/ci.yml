@@ -44,3 +44,5 @@ jobs:
         run: bundle exec rubocop --parallel
       - name: test
         run: bundle exec rspec
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
