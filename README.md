@@ -1,7 +1,7 @@
 # Makanai
 
 [![Gem Version](https://badge.fury.io/rb/makanai.svg)](https://badge.fury.io/rb/makanai)
-[![Build Status](https://travis-ci.com/Madogiwa0124/makanai.svg?branch=main)](https://travis-ci.com/Madogiwa0124/makanai)
+[![CI](https://github.com/madogiwa0124/makanai/actions/workflows/ci.yml/badge.svg)](https://github.com/madogiwa0124/makanai/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/Madogiwa0124/makanai/branch/main/graph/badge.svg)](https://codecov.io/gh/Madogiwa0124/makanai)
 
 simple web application framework for learning.
@@ -25,6 +25,7 @@ Or install it yourself as:
     $ gem install makanai
 
 ## Start sample project
+
 Getting started with Makanai is easy.
 
 ```
@@ -41,7 +42,7 @@ $ ruby app.rb
 
 create a ruby ​​file(ex. app.rb).
 
-``` ruby
+```ruby
 require 'makanai/main'
 
 router.get '/' do
@@ -49,7 +50,7 @@ router.get '/' do
 end
 ```
 
-start server(WEBrick) at  execute `$ ruby app.rb`.
+start server(WEBrick) at execute `$ ruby app.rb`.
 
 ```
 $ ruby app.rb
@@ -61,6 +62,7 @@ $ ruby app.rb
 When accessing root, `Hello Makanai!` is displayed.
 
 ## constitution
+
 Makanai application has the following constitution.
 
 ```
@@ -79,7 +81,7 @@ You can overwrite the settings (`Makanai :: Settings`) with the created ruby ​
 
 ex) When overriding rack app settings.
 
-``` ruby
+```ruby
 Makanai::Settings.rack_app_config = { handler: :webrick, host: '0.0.0.0', port: '8081' }
 ```
 
@@ -87,13 +89,13 @@ Makanai::Settings.rack_app_config = { handler: :webrick, host: '0.0.0.0', port: 
 
 Add rack web server(ex. puma) gem in your Gemfile.
 
-``` ruby
+```ruby
 gem 'puma'
 ```
 
 Overwrite the `handler` in `rack_app_config` with the created ruby ​​file(ex. app.rb).
 
-``` ruby
+```ruby
 Makanai::Settings.rack_app_config = { handler: :puma, host: '0.0.0.0', port: '8080' }
 ```
 
@@ -103,13 +105,13 @@ Makanai use `sqlite` by default, and make `db/makanai.db`.
 
 If you use another dbms, install dbms(PostgreSQL or MySQL). And add dbms gem (`pg` or `mysql2`) in your Gemfile.
 
-``` ruby
+```ruby
 gem 'pg'
 ```
 
 Overwrite the `databse_client` and `databse_config` with the created ruby ​​file(ex. app.rb) and Rakefile.
 
-``` ruby
+```ruby
 Makanai::Settings.databse_client = :postgres
 Makanai::Settings.databse_config = {
   host: 'localhost',
@@ -120,9 +122,10 @@ Makanai::Settings.databse_config = {
 ```
 
 ## routing
+
 Routing is searched in the order defined and call block args.
 
-``` ruby
+```ruby
 require 'makanai/main'
 
 # root path
@@ -171,7 +174,7 @@ end
 
 Define instance variables used in the routing view. And specify template engine(`ERB` or `Haml`).
 
-``` ruby
+```ruby
 require 'makanai/main'
 
 # setting template engine(default: :erb).
@@ -194,22 +197,22 @@ Create an erb file in `src/views` with the name specified in render.
 
 erb
 
-``` html
+```html
 <!-- src/views/index.erb -->
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title><%= @title %></title>
-</head>
-<body>
-  <%= @body %>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= @title %></title>
+  </head>
+  <body>
+    <%= @body %>
+  </body>
 </html>
 ```
 
 haml
 
-``` haml
+```haml
 !!!
 %html
   %head
@@ -248,10 +251,11 @@ INFO: finished migration all
 ```
 
 ## model
+
 `Makanai::Model` is simple ORM.
 It can be used by creating a class that inherits `Makanai::Model`.
 
-``` ruby
+```ruby
 require 'makanai/model'
 
 class Resource < Makanai::Model
@@ -293,7 +297,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/Madogi
 
 Use docker-compose to build `mysql` and` postgres` containers for development.
 
-``` sh
+```sh
 $ docker-compose up -d
 Creating makanai_mysql_1    ... done
 Creating makanai_postgres_1 ... done
