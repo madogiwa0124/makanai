@@ -70,7 +70,7 @@ module Makanai
     end
 
     def attributes
-      origin_attributes.map { |key, _val| [key, send(key)] }.to_h
+      origin_attributes.to_h { |key, _val| [key, send(key)] }
     end
 
     def create(db = Makanai::Database.new)
