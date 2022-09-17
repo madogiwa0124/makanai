@@ -37,7 +37,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gem-
       - name: install bundler
-        run: gem install bundler -v 2.3.3
+        run: gem install bundler -v 2.3.22
       - name: install ruby deps
         run: bundle install --jobs 4 --retry 3 --path vendor/bundle
       - name: lint
