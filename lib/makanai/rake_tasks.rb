@@ -23,8 +23,8 @@ namespace :makanai do
     task :migration do
       include Makanai::Migration
 
-      puts "INFO: start migration #{ENV['target']}"
-      target = ENV['target']
+      puts "INFO: start migration #{ENV.fetch('target', nil)}"
+      target = ENV.fetch('target', nil)
       pp migration_root_path
       if target == 'all'
         sql_paths = Dir.glob("#{migration_root_path}*")
@@ -32,7 +32,7 @@ namespace :makanai do
       else
         execute_sql(sql_path: File.join(migration_root_path, target))
       end
-      puts "INFO: finished migration #{ENV['target']}"
+      puts "INFO: finished migration #{ENV.fetch('target', nil)}"
     end
   end
 end
