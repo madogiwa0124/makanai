@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    makanai (0.1.7)
+    makanai (0.1.8)
       rack (>= 2.0.7, < 3.1.0)
       rackup (~> 0.2)
       rake (>= 10, < 14)
