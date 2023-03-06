@@ -24,7 +24,7 @@ GEM
     parser (3.1.2.1)
       ast (~> 2.4.1)
     pg (1.4.6)
-    rack (3.0.4.1)
+    rack (3.0.4.2)
     rackup (2.1.0)
       rack (>= 3)
       webrick (~> 1.8)
