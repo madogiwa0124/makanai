@@ -23,7 +23,7 @@ GEM
     parallel (1.22.1)
     parser (3.1.2.1)
       ast (~> 2.4.1)
-    pg (1.5.3)
+    pg (1.5.4)
     rack (3.0.8)
     rackup (2.1.0)
       rack (>= 3)
