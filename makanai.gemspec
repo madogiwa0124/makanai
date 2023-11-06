@@ -36,5 +36,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pg", "~> 1.2"
   spec.add_development_dependency "mysql2", "~> 0.5"
   spec.add_development_dependency "webrick", "~> 1.8.1"
-  spec.add_development_dependency "haml", "~> 5.0"
+  spec.add_development_dependency "haml", "~> 6.2"
 end
