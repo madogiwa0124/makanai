@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "rake", ">= 10", "< 14"
-  spec.add_dependency "rack", ">= 2.0.7", "< 3.1.0"
+  spec.add_dependency "rack", ">= 2.0.7", "< 3.2.0"
   spec.add_dependency "rackup", ">= 0.2", "< 3.0"
   spec.add_development_dependency "sqlite3", "~> 1.6.0"
   spec.add_development_dependency "rubocop", "~> 1.0"
